@@ -34,7 +34,7 @@
                 {{ _p('counter.tag_cloud', site.tags.length) }}
             </div>
             <div class="tag-cloud-tags">
-              {{ tagcloud({min_font: 12, max_font: 30, amount: 300, color: true, start_color: '#ccc', end_color: '#111'}) }}
+              {{ tagcloud({min_font: 16, max_font: 28, amount: 300, color: true, start_color: '#c6948e', end_color: '#FC6470'}) }}
             </div>
           </div>
         {% elif page.type === 'categories' %}
