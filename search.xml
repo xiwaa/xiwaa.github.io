@@ -1,29 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[你也进来啦？]]></title>
-    <url>%2F2019%2F08%2F04%2FJavaScript%E4%B8%AD%E7%9A%84this%2F</url>
-    <content type="text"><![CDATA[今天还不会写markdown,您老人家明年再来吧。]]></content>
-      <tags>
-        <tag>js</tag>
-        <tag>es6</tag>
-        <tag>css</tag>
-        <tag>learn</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[分类目录]]></title>
     <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[Program]]></title>
-    <url>%2Fprogram%2Findex.html</url>
+    <title><![CDATA[tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
+    <title><![CDATA[Program]]></title>
+    <url>%2Fprogram%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>
