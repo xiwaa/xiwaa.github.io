@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[你也进来啦？]]></title>
+    <url>%2F2019%2F08%2F04%2Fgreeting%2F</url>
+    <content type="text"><![CDATA[Are you OK? Nice to meet you. How are you? How do you do? I’m fine thank you, and you? Yes, OK, Bye.]]></content>
+      <tags>
+        <tag>greeting</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Program]]></title>
+    <url>%2Fprogram%2Findex.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[分类目录]]></title>
     <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
@@ -8,11 +21,6 @@
   <entry>
     <title><![CDATA[tags]]></title>
     <url>%2Ftags%2Findex.html</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[Program]]></title>
-    <url>%2Fprogram%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>
