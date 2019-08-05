@@ -12,11 +12,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Programming]]></title>
-    <url>%2FProgramming%2Findex.html</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
     <title><![CDATA[tags]]></title>
     <url>%2Ftags%2Findex.html</url>
     <content type="text"></content>
@@ -24,6 +19,11 @@
   <entry>
     <title><![CDATA[分类目录]]></title>
     <url>%2Fcategories%2Findex.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Programming]]></title>
+    <url>%2FProgramming%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>
