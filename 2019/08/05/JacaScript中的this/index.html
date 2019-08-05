@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Xiwaaの扣扣空间">
 <meta property="og:description" content="一、理解常规函数中的this​        this指的是运行当前这段函数代码的对象,或者说指的是函数运行时所在的环境.  12345678910var obj = &amp;#123;  foo: function () &amp;#123; console.log(this.bar) &amp;#125;,  bar: 1&amp;#125;;var foo = obj.foo;var bar = 2;obj.foo()">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-05T13:01:29.058Z">
+<meta property="og:updated_time" content="2019-08-05T13:12:55.985Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript中的this">
 <meta name="twitter:description" content="一、理解常规函数中的this​        this指的是运行当前这段函数代码的对象,或者说指的是函数运行时所在的环境.  12345678910var obj = &amp;#123;  foo: function () &amp;#123; console.log(this.bar) &amp;#125;,  bar: 1&amp;#125;;var foo = obj.foo;var bar = 2;obj.foo()">
@@ -389,7 +389,7 @@
 
 <p>​        对于<code>obj.foo()</code>来说, <code>foo</code>运行在<code>obj</code>环境, 调用者是<code>obj</code>, 所以this指向<code>obj</code>; 对于<code>foo()</code>来说, <code>foo</code>运行在全局环境,  调用者是window, 所以<code>this</code>指向全局环境. 不同环境不同作用域读取到的变量不同很正常, 所以两者的运行结果会不一样.</p>
 <p>​        这里我们要谈到一个叫执行上下文的玩意儿. JavaScript中执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。对于每个执行上下文，都有三个重要属性：变量对象(Variable object，VO), 作用域链(Scope chain)和this.</p>
-<p>​        一个函数定义之后可以在很多不同的地方被调用,  函数内部的this就在函数运行时指明了执行上下文, 也就是说明了<strong>是谁 在那里 调用了我</strong>. 这时候函数内部就能知道作用域是什么,有哪些变量是自己可以读取到的. 简单地说,要知道<code>this</code>指向什么, 我们只<strong>需要搞清楚函数是在什么时候什么地方被谁如何被调用的</strong>即可, 并不需要关注函数在哪里定义或声明.</p>
+<p>​        一个函数定义之后可以在很多不同的地方被调用,  函数内部的this就在函数运行时指明了执行上下文, 也就是说明了<strong>是哪个家伙 在哪里 调戏(调用)了我</strong>. 这时候函数内部就能知道作用域是什么,有哪些变量是自己可以读取到的. 简单地说,要知道<code>this</code>指向什么, 我们只<strong>需要搞清楚函数是在什么时候什么地方被谁如何被调用的</strong>即可, 并不需要关注函数在哪里定义或声明.</p>
 <p>​        <code>this</code>是使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="noopener"><code>call()</code></a>方法调用函数时传递的第一个参数, 他可以在函数调用时修改, 在函数没有调用的时候, this的值是无法确定的.</p>
 <p>​        接下来具体看看函数的调用, 以及不同情况下this指向哪里, 我们会借助call()方法来帮助理解.</p>
 <h4 id="一-存粹的函数调用"><a href="#一-存粹的函数调用" class="headerlink" title="(一)存粹的函数调用"></a>(一)存粹的函数调用</h4><p>​        第一种方法最常见, 例子如下:</p>
@@ -400,7 +400,7 @@
 
 <p>​        注意上面的<code>call</code>方法, <strong><code>call</code>方法接收的第一个参数就是this, 这里我们传了一个<code>undefined</code></strong>. 那么,依据定义,函数执行之后<code>console.log()</code>出来的会是<code>undefined</code>吗? 不是! (传入null或者undefined默认代表window对象)</p>
 <p>​        所以在这里调用test函数的是window, <code>this</code>就是指向的window全局对象. 执行上下文也就是全局执行上下文了. </p>
-<h4 id="二-作为对象方法的调用"><a href="#二-作为对象方法的调用" class="headerlink" title="(二)作为对象方法的调用"></a>(二)作为对象方法的调用</h4><p>​        函数还可以作为某个对象的方法调用,这时候一般<code>this</code>就指这个上级对象. (用call()方法可以例外)</p>
+<h4 id="二-作为对象方法的调用"><a href="#二-作为对象方法的调用" class="headerlink" title="(二)作为对象方法的调用"></a>(二)作为对象方法的调用</h4><p>​        函数还可以作为某个对象的方法调用,这时候一般<code>this</code>就指这个上级对象. (用call()方法可以例外哦)</p>
 <p>例子:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">"Jerry"</span>,</span><br><span class="line">    greet: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">true&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.greet();	<span class="comment">// 第一种调用方式</span></span><br><span class="line">obj.greet.call(obj) 	<span class="comment">//第二种调用方式</span></span><br></pre></td></tr></table></figure>
 
@@ -412,7 +412,7 @@
 <blockquote>
 <p>我们只需要搞清楚函数是在什么时候什么地方如何被调用的即可, 并不需要关注函数在哪里定义或声明.</p>
 </blockquote>
-<h4 id="三-构造函数中的this"><a href="#三-构造函数中的this" class="headerlink" title="(三)构造函数中的this"></a>(三)构造函数中的this</h4><p>​        构造函数中的<code>this</code>有一点特殊, 每个构造函数在new之后都会返回一个实例对象,这个对象就是<code>this</code>,也就是执行上下文.</p>
+<h4 id="三-构造函数中的this"><a href="#三-构造函数中的this" class="headerlink" title="(三)构造函数中的this"></a>(三)构造函数中的this</h4><p>​        构造函数中的<code>this</code>有一点特殊, 每个构造函数在new之后都会返回一个实例对象, <code>this</code>就指这个实例对象.</p>
 <p>例子:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">true<span class="keyword">this</span>.name = <span class="string">"Tom"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Test();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> p); 	<span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(p.name); 	<span class="comment">// Tom</span></span><br></pre></td></tr></table></figure>
 
