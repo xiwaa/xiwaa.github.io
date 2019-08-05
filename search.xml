@@ -8,13 +8,18 @@
   <entry>
     <title><![CDATA[JavaScript中的this]]></title>
     <url>%2F2019%2F08%2F05%2FJacaScript%E4%B8%AD%E7%9A%84this%2F</url>
-    <content type="text"><![CDATA[一、理解常规函数中this​ this指向执行当前这一段代码的对象. 翻译成人话就是: 执行上下文意味着函数是在这里调用的, 每个函数在运行的时候都有个指向执行上下文的东西, 它就是this. 要理解this, 我们只需要搞清楚函数是在什么时候什么地方如何被调用的即可, 并不需要关注函数在哪里定义或声明. ​ this是使用call方法调用函数时传递的第一个参数, 他可以在函数调用时修改, 在函数没有调用的时候, this的值是无法确定的. ​ 如果没有使用过call方法来调用函数的话, 上面的对于this的定义可能不太明白.那么我们需要先理解函数调用的两种方法: (一)纯粹的函数调用第一种方法最常见, 例子如下: 12345function test(name) &#123;trueconsole.log(name); console.log(this);&#125;test("Jerry"); 这种方法我发平常使用的最多,但是这种函数调用方法只是一种简写,它完整的写法是下面这样的: 12345function test(name) &#123; console.log(name); console.log(this);&#125;test.call(undefined, "Tom"); 注意上面的call方法, call方法接收的第一个参数就是this, 这里我们传了一个undefined. 那么,依据定义,函数执行之后console.log()出来的会是undefined吗? 不是! 传入null或者undefined默认代表window对象 所以在这里调用test函数的是window, this就是指向的window全局对象. 执行上下文也就是全局执行上下文了. (二)对象中函数的调用例子: 12345678const obj = &#123; name: "Jerry", greet: function() &#123; console.log(this.name);true&#125;&#125;obj.greet(); // 第一种调用方式obj.greet.call(obj) //第二种调用方式 以上例子中的第一种调用方式实际上只是第二种方式的语法糖, 第二种从事完整的调用方法, 二第二种方法厉害的地方就在于它可以手动指定this. 手动指定this的例子: 1234567const obj = &#123; name: "Jerry", greet: function() &#123;truetrueconsole.log(this.name); &#125;&#125;obj.greet.call(&#123;name: "Trump"&#125;); // 打出来是 Trump 上面例子call方法调用函数时传入的是一个对象, 这个对象就是手动指定的this, 因此greet()行数中console.log(this.name)打印出来的就是Trump了. 这个例子也验证了文章第一段所说的: 我们只需要搞清楚函数是在什么时候什么地方如何被调用的即可, 并不需要关注函数在哪里定义或声明. (三)构造函数中的this构造函数中的this有一点特殊, 每个构造函数在new之后都会返回一个实例对象,这个对象就是this,也就是执行上下文. 例子: 123456function Test() &#123;truethis.name = "Tom";&#125;let p = new Test();console.log(typeof p); // objectconsole.log(p.name); // Tom window.setTimeout() 和window.setInterval()中函数的调用 他们两个函数中的this有些特殊,里面的this默认是window对象. 简单总结一下：函数完整的调用方法是使用call方法，包括test.call(context, name)和obj.greet.call(context,name)，这里的context就是函数调用时的上下文，也就是this，只不过这个this是可以通过call方法来修改的；构造函数稍微特殊一点，它的this直接指向new之后返回的对象；window.setTimeout()和window.setInterval()默认的是this是window对象。 二、理解箭头函数中的this从上面可以看出来, this是函数用call方法调用时传递的第一个参数, 而且this还可以通过手动指定来更改, 这样要确定this的值就很麻烦. 箭头函数就不存在这样的问题. (一)箭头函数默认绑定外层函数的this实际上箭头函数内部没有this,]]></content>
+    <content type="text"><![CDATA[一、理解常规函数中thisJavaScript 有一个特殊的关键字 this，它可以在方法中使用以指代当前对象。执行上下文(execution context)意味着函数是在这里调用的, 每个函数在运行的时候都有个指向执行上下文的东西, 它就是this. 要理解this, 我们只需要搞清楚函数是在什么时候什么地方如何被调用的即可, 并不需要关注函数在哪里定义或声明. ​ this是使用call()方法调用函数时传递的第一个参数, 他可以在函数调用时修改, 在函数没有调用的时候, this的值是无法确定的. ​ 如果没有使用过call()方法来调用函数的话, 上面的对于this的定义可能不太明白.那么我们需要先理解函数调用的两种方法: (一)纯粹的函数调用第一种方法最常见, 例子如下: 12345function test(name) &#123;trueconsole.log(name); console.log(this);&#125;test("Jerry"); 这种方法我发平常使用的最多,但是这种函数调用方法只是一种简写,它完整的写法是下面这样的: 12345function test(name) &#123; console.log(name); console.log(this);&#125;test.call(undefined, "Tom"); 注意上面的call方法, call方法接收的第一个参数就是this, 这里我们传了一个undefined. 那么,依据定义,函数执行之后console.log()出来的会是undefined吗? 不是! 传入null或者undefined默认代表window对象 所以在这里调用test函数的是window, this就是指向的window全局对象. 执行上下文也就是全局执行上下文了. (二)对象中函数的调用例子: 12345678const obj = &#123; name: "Jerry", greet: function() &#123; console.log(this.name);true&#125;&#125;obj.greet(); // 第一种调用方式obj.greet.call(obj) //第二种调用方式 以上例子中的第一种调用方式实际上只是第二种方式的语法糖, 第二种才是完整的调用方法, 第二种方法厉害的地方就在于它可以手动指定this. 手动指定this的例子: 1234567const obj = &#123; name: "Jerry", greet: function() &#123;truetrueconsole.log(this.name); &#125;&#125;obj.greet.call(&#123;name: "Trump"&#125;); // 打出来是 Trump 上面例子call方法调用函数时传入的是一个对象, 这个对象就是手动指定的this, 因此greet()行数中console.log(this.name)打印出来的就是Trump了. 这个例子也验证了文章第一段所说的: 我们只需要搞清楚函数是在什么时候什么地方如何被调用的即可, 并不需要关注函数在哪里定义或声明. (三)构造函数中的this构造函数中的this有一点特殊, 每个构造函数在new之后都会返回一个实例对象,这个对象就是this,也就是执行上下文. 例子: 123456function Test() &#123;truethis.name = "Tom";&#125;let p = new Test();console.log(typeof p); // objectconsole.log(p.name); // Tom (四)window.setTimeout() 和window.setInterval()中函数的调用他们两个函数中的this有些特殊,里面的this默认是window对象. 简单总结一下：函数完整的调用方法是使用call方法，包括test.call(context, name)和obj.greet.call(context,name)，这里的context就是函数调用时的上下文，也就是this，只不过这个this是可以通过call方法来修改的；构造函数稍微特殊一点，它的this直接指向new之后返回的对象；window.setTimeout()和window.setInterval()默认的是this是window对象。 二、理解箭头函数中的this箭头函数表达式的语法比函数表达式更简洁，并且没有自己的this，arguments，super或 new.target。这些函数表达式更适用于那些本来需要匿名函数的地方，并且它们不能用作构造函数。 (一)箭头函数不绑定层this在箭头函数出现之前，每个新定义的函数都有它自己的 this值（在构造函数的情况下是一个新对象，在严格模式的函数调用中为 undefined，如果该函数被作为“对象方法”调用则为基础对象等）。This被证明是令人厌烦的面向对象风格的编程。箭头函数不会创建自己的this,它只会从自己的作用域链的上一层继承this。 不使用箭头函数的例子: 123456const obj = &#123; a: function() &#123; console.log(this); &#125;&#125;obj.a(); // 打印出的是obj对象 使用箭头函数的例子： 1234const obj =&#123; a: () =&gt; console.log(this)&#125;obj.a(); // 打印出来的是window 上面这个例子中, 从作用域链上层(这里的上层也就是window)继承了this 再来个例子: 12345678function test() &#123; const myObj = &#123; name: "hejian", greeting: () =&gt; console.log(this) &#125; return myObj.greeting(); &#125;test(); // 打印出来的是window 以上这个例子, 如果箭头函数像普通函数一样默认绑定this的话, 它的this应该指向myObj. 但是由于 箭头函数不会创建自己的this,它只会从自己的作用域链的上一层继承this, 所以这里就向作用域链的上级test()这一层作用域中查询,test()是个普通函数默认有this, 那么查询到这里就结束了. 那么这个this指向哪里呢? 答案就是指向window! 为了方便理解最后一行的text()可以用这样写: test.call(undefined) (二)不能用call方法修改箭头函数的this由于 箭头函数没有自己的this指针，通过 call() 或 apply() 方法调用一个函数时，只能传递参数（不能绑定this—译者注），他们的第一个参数会被忽略。（这种现象对于bind方法同样成立—译者注） 1234567891011121314151617let adder = &#123; base : 1, add : function(a) &#123; var f = v =&gt; v + this.base; return f(a); &#125;, addThruCall: function(a) &#123; var f = v =&gt; v + this.base; var b = &#123; base : 2 &#125;; return f.call(b, a); &#125;&#125;;console.log(adder.add(1)); // 输出 2console.log(adder.addThruCall(1)); // 仍然输出 2（而不是3 ——译者注） 如上所示, 企图用call方法作用与箭头函数来手动指定this是行不通的. 参考: 掘金 - JS中的箭头函数与this JavaScript - all about this keyword MDN - 使用对象 MDN - 使用函数]]></content>
       <categories>
         <category>Programming</category>
       </categories>
       <tags>
         <tag>js</tag>
       </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[分类目录]]></title>
+    <url>%2Fcategories%2Findex.html</url>
+    <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[Programming]]></title>
@@ -24,11 +29,6 @@
   <entry>
     <title><![CDATA[tags]]></title>
     <url>%2Ftags%2Findex.html</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[分类目录]]></title>
-    <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>
