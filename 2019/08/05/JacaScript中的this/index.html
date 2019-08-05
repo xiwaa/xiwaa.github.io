@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Xiwaaの扣扣空间">
 <meta property="og:description" content="一、理解常规函数中的this​        this指的是运行当前这段函数代码的对象,或者说指的是函数运行时所在的环境.  12345678910var obj = &amp;#123;  foo: function () &amp;#123; console.log(this.bar) &amp;#125;,  bar: 1&amp;#125;;var foo = obj.foo;var bar = 2;obj.foo()">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-05T12:49:26.313Z">
+<meta property="og:updated_time" content="2019-08-05T12:54:58.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript中的this">
 <meta name="twitter:description" content="一、理解常规函数中的this​        this指的是运行当前这段函数代码的对象,或者说指的是函数运行时所在的环境.  12345678910var obj = &amp;#123;  foo: function () &amp;#123; console.log(this.bar) &amp;#125;,  bar: 1&amp;#125;;var foo = obj.foo;var bar = 2;obj.foo()">
@@ -387,10 +387,10 @@
         <h3 id="一、理解常规函数中的this"><a href="#一、理解常规函数中的this" class="headerlink" title="一、理解常规函数中的this"></a>一、理解常规函数中的this</h3><p>​        this指的是运行当前这段函数代码的对象,或者说指的是函数运行时所在的环境. </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  foo: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>.bar) &#125;,</span><br><span class="line">  bar: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = obj.foo;</span><br><span class="line"><span class="keyword">var</span> bar = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">obj.foo() <span class="comment">// 1</span></span><br><span class="line">foo() <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
 
-<p>​        对于<code>obj.foo()</code>来说, <code>foo</code>运行在<code>obj</code>环境, 调用者是<code>obj</code>, 所以this指向<code>obj</code>; 对于<code>foo()</code>来说, <code>foo</code>运行在全局环境,  调用者是window, 所以<code>this</code>指向全局环境. 所以, 不同环境读取到的变量是可能不同的, 所以两者的运行结果不一样.</p>
-<p>这里我们要谈一个叫执行上下文的玩意儿. JavaScript中执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。对于每个执行上下文，都有三个重要属性：变量对象(Variable object，VO), 作用域链(Scope chain)和this.</p>
-<p> 众所周知一个函数定义之后可以在很多不同的地方被调用,  函数内部的this就在函数运行时指明了执行上下文, 也就是说明了<strong>是谁 在那里 调用了我</strong>. 这时候函数内部就能知道作用域是什么,有哪些变量是自己可以读取到的.</p>
-<p>简单地说,要知道<code>this</code>指向什么, 我们只<strong>需要搞清楚函数是在什么时候什么地方被谁如何被调用的</strong>即可, 并不需要关注函数在哪里定义或声明.</p>
+<p>​        对于<code>obj.foo()</code>来说, <code>foo</code>运行在<code>obj</code>环境, 调用者是<code>obj</code>, 所以this指向<code>obj</code>; 对于<code>foo()</code>来说, <code>foo</code>运行在全局环境,  调用者是window, 所以<code>this</code>指向全局环境. 不同环境不同作用域读取到的变量不同很正常, 所以两者的运行结果会不一样.</p>
+<p>​        这里我们要谈到一个叫执行上下文的玩意儿. JavaScript中执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。对于每个执行上下文，都有三个重要属性：变量对象(Variable object，VO), 作用域链(Scope chain)和this.</p>
+<p>​        一个函数定义之后可以在很多不同的地方被调用,  函数内部的this就在函数运行时指明了执行上下文, 也就是说明了<strong>是谁 在那里 调用了我</strong>. 这时候函数内部就能知道作用域是什么,有哪些变量是自己可以读取到的.</p>
+<p>​        简单地说,要知道<code>this</code>指向什么, 我们只<strong>需要搞清楚函数是在什么时候什么地方被谁如何被调用的</strong>即可, 并不需要关注函数在哪里定义或声明.</p>
 <p>​        <code>this</code>是使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="noopener"><code>call()</code></a>方法调用函数时传递的第一个参数, 他可以在函数调用时修改, 在函数没有调用的时候, this的值是无法确定的.</p>
 <p>​        如果没有使用过<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="noopener"><code>call()</code></a>方法来调用函数的话, 上面的对于this的定义可能不太明白.那么我们需要先理解函数调用的两种方法:</p>
 <h4 id="一-存粹的函数调用"><a href="#一-存粹的函数调用" class="headerlink" title="(一)存粹的函数调用"></a>(一)存粹的函数调用</h4><p>​        第一种方法最常见, 例子如下:</p>
