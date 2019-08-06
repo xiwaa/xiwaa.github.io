@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="js,">
+  <meta name="keywords" content="html,js,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="一、理解常规函数中的this​        this指的是运行当前这段函数代码的对象,或者说指的是函数运行时所在的环境.  12345678910var obj = &amp;#123;  foo: function () &amp;#123; console.log(this.bar) &amp;#125;,  bar: 1&amp;#125;;var foo = obj.foo;var bar = 2;obj.foo()">
-<meta name="keywords" content="js">
+<meta name="description" content="一、HTMLCollectionHTMLCollection是一个包含了元素（元素顺序为文档流中的顺序）的通用集合（generic collection），是一个类数组对象, 它还提供了用来从该集合中选择元素的方法和属性。 HTML DOM 中的 HTMLCollection 是即时更新的（live当其; 所包含的文档结构发生改变时, 它会自动更新, 所以遍历的时候需要注意.  注意：由于历史原因">
+<meta name="keywords" content="html,js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript中的this">
-<meta property="og:url" content="http://www.xiwaa.me/2019/08/05/JacaScript中的this/index.html">
+<meta property="og:title" content="HTMLCollection与NodeList">
+<meta property="og:url" content="http://www.xiwaa.me/2019/08/06/HTMLCollection与NodeList/index.html">
 <meta property="og:site_name" content="Xiwaaの扣扣空间">
-<meta property="og:description" content="一、理解常规函数中的this​        this指的是运行当前这段函数代码的对象,或者说指的是函数运行时所在的环境.  12345678910var obj = &amp;#123;  foo: function () &amp;#123; console.log(this.bar) &amp;#125;,  bar: 1&amp;#125;;var foo = obj.foo;var bar = 2;obj.foo()">
+<meta property="og:description" content="一、HTMLCollectionHTMLCollection是一个包含了元素（元素顺序为文档流中的顺序）的通用集合（generic collection），是一个类数组对象, 它还提供了用来从该集合中选择元素的方法和属性。 HTML DOM 中的 HTMLCollection 是即时更新的（live当其; 所包含的文档结构发生改变时, 它会自动更新, 所以遍历的时候需要注意.  注意：由于历史原因">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-05T13:12:55.985Z">
+<meta property="og:updated_time" content="2019-08-06T07:50:21.874Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript中的this">
-<meta name="twitter:description" content="一、理解常规函数中的this​        this指的是运行当前这段函数代码的对象,或者说指的是函数运行时所在的环境.  12345678910var obj = &amp;#123;  foo: function () &amp;#123; console.log(this.bar) &amp;#125;,  bar: 1&amp;#125;;var foo = obj.foo;var bar = 2;obj.foo()">
+<meta name="twitter:title" content="HTMLCollection与NodeList">
+<meta name="twitter:description" content="一、HTMLCollectionHTMLCollection是一个包含了元素（元素顺序为文档流中的顺序）的通用集合（generic collection），是一个类数组对象, 它还提供了用来从该集合中选择元素的方法和属性。 HTML DOM 中的 HTMLCollection 是即时更新的（live当其; 所包含的文档结构发生改变时, 它会自动更新, 所以遍历的时候需要注意.  注意：由于历史原因">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.xiwaa.me/2019/08/05/JacaScript中的this/">
+  <link rel="canonical" href="http://www.xiwaa.me/2019/08/06/HTMLCollection与NodeList/">
 
 
 
 
 
-  <title>JavaScript中的this | Xiwaaの扣扣空间</title>
+  <title>HTMLCollection与NodeList | Xiwaaの扣扣空间</title>
   
 
 
@@ -295,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.xiwaa.me/2019/08/05/JacaScript中的this/">
+    <link itemprop="mainEntityOfPage" href="http://www.xiwaa.me/2019/08/06/HTMLCollection与NodeList/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xiwaa">
@@ -312,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript中的this</h1>
+          <h1 class="post-title" itemprop="name headline">HTMLCollection与NodeList</h1>
         
 
         <div class="post-meta">
@@ -324,8 +324,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-05T11:45:35+08:00">
-                2019-08-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-06T13:50:15+08:00">
+                2019-08-06
               </time>
             
 
@@ -384,64 +384,59 @@
       
 
       
-        <h3 id="一、理解常规函数中的this"><a href="#一、理解常规函数中的this" class="headerlink" title="一、理解常规函数中的this"></a>一、理解常规函数中的this</h3><p>​        this指的是运行当前这段函数代码的对象,或者说指的是函数运行时所在的环境. </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  foo: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>.bar) &#125;,</span><br><span class="line">  bar: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = obj.foo;</span><br><span class="line"><span class="keyword">var</span> bar = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">obj.foo() <span class="comment">// 1</span></span><br><span class="line">foo() <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
-
-<p>​        对于<code>obj.foo()</code>来说, <code>foo</code>运行在<code>obj</code>环境, 调用者是<code>obj</code>, 所以this指向<code>obj</code>; 对于<code>foo()</code>来说, <code>foo</code>运行在全局环境,  调用者是window, 所以<code>this</code>指向全局环境. 不同环境不同作用域读取到的变量不同很正常, 所以两者的运行结果会不一样.</p>
-<p>​        这里我们要谈到一个叫执行上下文的玩意儿. JavaScript中执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。对于每个执行上下文，都有三个重要属性：变量对象(Variable object，VO), 作用域链(Scope chain)和this.</p>
-<p>​        一个函数定义之后可以在很多不同的地方被调用,  函数内部的this就在函数运行时指明了执行上下文, 也就是说明了<strong>是哪个家伙 在哪里 调戏(调用)了我</strong>. 这时候函数内部就能知道作用域是什么,有哪些变量是自己可以读取到的. 简单地说,要知道<code>this</code>指向什么, 我们只<strong>需要搞清楚函数是在什么时候什么地方被谁如何被调用的</strong>即可, 并不需要关注函数在哪里定义或声明.</p>
-<p>​        <code>this</code>是使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="noopener"><code>call()</code></a>方法调用函数时传递的第一个参数, 他可以在函数调用时修改, 在函数没有调用的时候, this的值是无法确定的.</p>
-<p>​        接下来具体看看函数的调用, 以及不同情况下this指向哪里, 我们会借助call()方法来帮助理解.</p>
-<h4 id="一-存粹的函数调用"><a href="#一-存粹的函数调用" class="headerlink" title="(一)存粹的函数调用"></a>(一)存粹的函数调用</h4><p>​        第一种方法最常见, 例子如下:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">true<span class="built_in">console</span>.log(name);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">test(<span class="string">"Jerry"</span>);</span><br></pre></td></tr></table></figure>
-
-<p>​        这种方法我们平常使用的最多,但是这种函数调用方法只是一种简写,它完整的写法是下面这样的:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">test.call(<span class="literal">undefined</span>, <span class="string">"Tom"</span>);</span><br></pre></td></tr></table></figure>
-
-<p>​        注意上面的<code>call</code>方法, <strong><code>call</code>方法接收的第一个参数就是this, 这里我们传了一个<code>undefined</code></strong>. 那么,依据定义,函数执行之后<code>console.log()</code>出来的会是<code>undefined</code>吗? 不是! (传入null或者undefined默认代表window对象)</p>
-<p>​        所以在这里调用test函数的是window, <code>this</code>就是指向的window全局对象. 执行上下文也就是全局执行上下文了. </p>
-<h4 id="二-作为对象方法的调用"><a href="#二-作为对象方法的调用" class="headerlink" title="(二)作为对象方法的调用"></a>(二)作为对象方法的调用</h4><p>​        函数还可以作为某个对象的方法调用,这时候一般<code>this</code>就指这个上级对象. (用call()方法可以例外哦)</p>
-<p>例子:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">"Jerry"</span>,</span><br><span class="line">    greet: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">true&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.greet();	<span class="comment">// 第一种调用方式</span></span><br><span class="line">obj.greet.call(obj) 	<span class="comment">//第二种调用方式</span></span><br></pre></td></tr></table></figure>
-
-<p>​        以上例子中的第一种调用方式实际上只是第二种方式的语法糖, 第二种才是完整的调用方法, <strong>第二种方法厉害的地方就在于它可以手动指定this.</strong></p>
-<p>手动指定<code>this</code>的例子:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">"Jerry"</span>,</span><br><span class="line">    greet: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">truetrue<span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.greet.call(&#123;<span class="attr">name</span>: <span class="string">"Trump"</span>&#125;); 	<span class="comment">// 打出来是 Trump</span></span><br></pre></td></tr></table></figure>
-
-<p>​        上面例子<code>call</code>方法调用函数时传入的是一个对象, 这个对象就是手动指定的<code>this</code>, 因此<code>greet()</code>行数中<code>console.log(this.name)</code>打印出来的就是Trump了. 这个例子也验证了文章第一段所说的:</p>
+        <h3 id="一、HTMLCollection"><a href="#一、HTMLCollection" class="headerlink" title="一、HTMLCollection"></a><strong>一、HTMLCollection</strong></h3><p>HTMLCollection是一个包含了元素（元素顺序为文档流中的顺序）的通用集合（generic collection），是一个类数组对象, 它还提供了用来从该集合中选择元素的方法和属性。</p>
+<p><strong>HTML DOM 中的 <code>HTMLCollection</code> 是即时更新的（live当其; 所包含的文档结构发生改变时, 它会自动更新, 所以遍历的时候需要注意.</strong></p>
 <blockquote>
-<p>我们只需要搞清楚函数是在什么时候什么地方如何被调用的即可, 并不需要关注函数在哪里定义或声明.</p>
+<p>注意：由于历史原因（DOM4之前，实现该接口的集合只能包含 HTML 元素），该接口被称为<code>HTMLCollection</code>。</p>
+<p>DOM有个节点树的概念, 节点(node)有不同种类, 例如<strong>元素节点</strong>、文本节点、属性节点… HTMLCollection中包含的HTML元素实际上就是元素节点</p>
+<p>nodeType一共有12种类:<br>元素节点            　　 Node.ELEMENT_NODE(1)<br>属性节点            　　 Node.ATTRIBUTE_NODE(2)<br>文本节点            　　 Node.TEXT_NODE(3)<br>CDATA节点                 Node.CDATA_SECTION_NODE(4)<br>实体引用名称节点     Node.ENTRY_REFERENCE_NODE(5)<br>实体名称节点        　 Node.ENTITY_NODE(6)<br>处理指令节点        　 Node.PROCESSING_INSTRUCTION_NODE(7)<br>注释节点            　     Node.COMMENT_NODE(8)<br>文档节点            　     Node.DOCUMENT_NODE(9)<br>文档类型节点        　 Node.DOCUMENT_TYPE_NODE(10)<br>文档片段节点        　 Node.DOCUMENT_FRAGMENT_NODE(11)<br>DTD声明节点             Node.NOTATION_NODE(12)</p>
 </blockquote>
-<h4 id="三-构造函数中的this"><a href="#三-构造函数中的this" class="headerlink" title="(三)构造函数中的this"></a>(三)构造函数中的this</h4><p>​        构造函数中的<code>this</code>有一点特殊, 每个构造函数在new之后都会返回一个实例对象, <code>this</code>就指这个实例对象.</p>
-<p>例子:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">true<span class="keyword">this</span>.name = <span class="string">"Tom"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Test();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> p); 	<span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(p.name); 	<span class="comment">// Tom</span></span><br></pre></td></tr></table></figure>
+<h4 id="属性"><a href="#属性" class="headerlink" title="属性:"></a><strong>属性:</strong></h4><ul>
+<li>HTMLCollection.length    </li>
+</ul>
+<p>​        返回集合当中子元素的数目.</p>
+<p><em>使用像element.getElementsByTagName()等方式获取元素的时候返回的就是HTMLCollection对象而不是数组, 所以无法使用forEach这样的数组方法遍历, 不过使用for循环遍历是可以的. 不过可以使用Array.from(someHTMLCollection)这样的方式将其转换成数组.</em></p>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法:"></a><strong>方法:</strong></h4><ul>
+<li>HTMLCollection.item()    通过索引返回其中的元素</li>
+</ul>
+<ul>
+<li>HMLCollection.namedItem()</li>
+</ul>
+<p>​        根据 <code>Id</code>返回指定节点，或者作为备用，根据字符串所表示的 <code>name</code> 属性来匹配。根据 <code>name</code>匹配只能作为最后的依赖，并且只有当被引用的元素支持 <code>name</code> 属性时才能被匹配。如果不存在符合给定 <code>name</code>的节点，则返回 <code>null</code>。</p>
+<h3 id="二、NodeList"><a href="#二、NodeList" class="headerlink" title="二、NodeList"></a><strong>二、NodeList</strong></h3><p><code>NodeList</code>对象是一个节点的集合, 是由<code>Node.childNodes</code>和<code>document.querySelectorAll()</code>返回的. NodeList是一个类数组(<code>Array-like</code>)的对象.</p>
+<p>在一些情况下, <code>NodeList</code>是一个实时的集合, 也就是说如果文档中的节点树发生变化, 已经存在的实时<code>NodeList</code>对象也会随之变化. 例如, <code>Node.childNodes</code>是实时的:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> parent = <span class="built_in">document</span>.getElementById(<span class="string">"parent"</span>);</span><br><span class="line"><span class="keyword">const</span> chld_nodes = parent.childNodes;</span><br><span class="line"><span class="built_in">console</span>.log(child_nodes.length);	<span class="comment">// 我们假设结果为2</span></span><br><span class="line">parent.appendChild(<span class="built_in">document</span>.createElement(<span class="string">"div"</span>));	</span><br><span class="line"><span class="built_in">console</span>.log(chid_nodes.length);		<span class="comment">//结果变成3了</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="四-window-setTimeout-和window-setInterval-中函数的调用"><a href="#四-window-setTimeout-和window-setInterval-中函数的调用" class="headerlink" title="(四)window.setTimeout() 和window.setInterval()中函数的调用"></a>(四)window.setTimeout() 和window.setInterval()中函数的调用</h4><p>​        他们两个函数中的<code>this</code>有些特殊,里面的<code>this</code>默认是<code>window</code>对象.</p>
-<p>​        <strong><em>简单总结一下：函数完整的调用方法是使用call方法，包括<code>test.call(context, name)</code>和<code>obj.greet.call(context,name)</code>，这里的context就是函数调用时的上下文，也就是<code>this</code>，只不过这个this是可以通过call方法来修改的；构造函数稍微特殊一点，它的<code>this</code>直接指向new之后返回的对象；<code>window.setTimeout()</code>和<code>window.setInterval()</code>默认的是<code>this</code>是window对象。</em></strong></p>
-<h3 id="二、理解箭头函数中的this"><a href="#二、理解箭头函数中的this" class="headerlink" title="二、理解箭头函数中的this"></a>二、理解箭头函数中的this</h3><p>​        <strong>箭头函数表达式</strong>的语法比<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/function" target="_blank" rel="noopener">函数表达式</a>更简洁，并且没有自己的<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this" target="_blank" rel="noopener">this</a>，<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments" target="_blank" rel="noopener">arguments</a>，<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/super" target="_blank" rel="noopener">super</a>或 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new.target" target="_blank" rel="noopener">new.target</a>。这些函数表达式更适用于那些本来需要匿名函数的地方，并且它们不能用作构造函数。</p>
-<h4 id="一-箭头函数默认不绑定this"><a href="#一-箭头函数默认不绑定this" class="headerlink" title="(一)箭头函数默认不绑定this"></a>(一)箭头函数默认不绑定this</h4><p>​        在箭头函数出现之前，每个新定义的函数都有它自己的 <code>this</code>值（在构造函数的情况下是一个新对象，在严格模式的函数调用中为 undefined，如果该函数被作为“对象方法”调用则为基础对象等）。<code>this</code>被证明是令人厌烦的面向对象风格的编程。<strong>箭头函数不会创建自己的this,它只会从自己的作用域链的上一层继承this。</strong></p>
-<p>不使用箭头函数的例子:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    a: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.a();	<span class="comment">// 打印出的是obj对象</span></span><br></pre></td></tr></table></figure>
+<p>在其他情况下, <code>NodeList</code>是一个静态集合, 也就意味着随后对文档对象模型的任何改动都不会影响集合的内容. 比兔<code>document.querySelectorAll()</code> 就会返回一个静态的<code>NodeList</code>. 最好牢记这种不同, 尤其是在对<code>NodeList</code>进行遍历的时候.</p>
+<h4 id="属性-1"><a href="#属性-1" class="headerlink" title="属性:"></a><strong>属性:</strong></h4><ul>
+<li>NodeList.length()</li>
+</ul>
+<h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法:"></a><strong>方法:</strong></h4><ul>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/NodeList/item" target="_blank" rel="noopener"><code>NodeList.item()</code></a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/NodeList/entries" target="_blank" rel="noopener"><code>NodeList.entries()</code></a></p>
+<p>  Returns an <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols" target="_blank" rel="noopener"><code>iterator</code></a>, allowing code to go through all key/value pairs contained in the collection. (In this case, the keys are numbers starting from 0 and the values are nodes.)</p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/NodeList/forEach" target="_blank" rel="noopener"><code>NodeList.forEach()</code></a></p>
+<p>  Executes a provided function once per <code>NodeList</code> element, passing the element as an argument to the function.</p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/NodeList/keys" target="_blank" rel="noopener"><code>NodeList.keys()</code></a></p>
+<p>  Returns an <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols" target="_blank" rel="noopener"><code>iterator</code></a>, allowing code to go through all the keys of the key/value pairs contained in the collection. (In this case, the keys are numbers starting from 0.)</p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/NodeList/values" target="_blank" rel="noopener"><code>NodeList.values()</code></a></p>
+<p>  Returns an <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols" target="_blank" rel="noopener"><code>iterator</code></a> allowing code to go through all values (nodes) of the key/value pairs contained in the collection.</p>
+</li>
+</ul>
+<h3 id="总结一下HTMLCollection和NodeList的主要区别就在于"><a href="#总结一下HTMLCollection和NodeList的主要区别就在于" class="headerlink" title="总结一下HTMLCollection和NodeList的主要区别就在于:"></a><strong>总结一下HTMLCollection和NodeList的主要区别就在于:</strong></h3><ul>
+<li><code>NodeList</code>中可包含所有12中节点类型, <code>HTMLCollection</code>中只能包含元素节点这一种;</li>
+<li><code>NodeList</code>是类数组对象, 拥有<code>forEach()</code>, <code>entries()</code>, <code>keys()</code>等方法而<code>HTMLCollection</code>没有</li>
+<li><code>HTMLCollection</code>是实时的, 而<code>NodeList</code>既可以是实时(<code>node.childNodes</code>返回的是实时的)也可以是静态的(<code>node.querySelectorAll()</code>返回的是静态的).</li>
+</ul>
+<p>另外提一下, 这里谈论的<code>NodeList</code>的静态集合跟使用<code>jQuery</code>获取元素是相似的, 都是获取了就不变了. 好像有点像<code>Linux</code>上做快照(<code>snapshot</code>), 就记录那一瞬间, 哈哈.</p>
+<h3 id="闲扯环节"><a href="#闲扯环节" class="headerlink" title="闲扯环节"></a><strong><em>闲扯环节</em></strong></h3><p>上面已经写得很清楚了, 记住区别就行. 下面介绍一下stackoverflow上一位答主判断<code>HTMLCollection</code>和<code>NodeList</code>什么时候静态什么时候实时的代码, 或许可以帮助理解.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;isLive&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"c"</span> name=<span class="string">"myDiv"</span>&gt;C1&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;div class="c" name="myDiv"&gt;C2&lt;/</span>div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">isLive</span>(<span class="params">collection</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (collection.length &lt; <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">undefined</span>; </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">let</span> body = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>];</span><br><span class="line">                <span class="keyword">let</span> len1 = collection.length;</span><br><span class="line">                <span class="keyword">let</span> clone = collection.item(<span class="number">0</span>).cloneNode();</span><br><span class="line">                clone.style.display = <span class="string">"none"</span>;</span><br><span class="line">                body.appendChild(clone);</span><br><span class="line">                <span class="keyword">let</span> len2 = collection.length;</span><br><span class="line">                body.removeChild(clone);</span><br><span class="line">                <span class="keyword">return</span> len2 !== len1;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            divs1 = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'c'</span>);</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"document.getElementsByClassName('c'): "</span>,divs1.toString()); <span class="comment">//"[object HTMLCollection]"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            divs2 = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.c'</span>);</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"document.querySelectorAll('.c'): "</span>,divs2.toString()); <span class="comment">//"[object NodeList]"</span></span><br><span class="line"></span><br><span class="line">            divs3 = <span class="built_in">document</span>.getElementsByName(<span class="string">'myDiv'</span>);</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"document.getElementsByName('myDiv'): "</span>,divs3.toString()); <span class="comment">//"[object NodeList"]</span></span><br><span class="line"></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"isLive(divs1)"</span>,isLive(divs1)); <span class="comment">//true</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"isLive(divs2)"</span>,isLive(divs2)); <span class="comment">//false</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"isLive(divs3)"</span>,isLive(divs3)); <span class="comment">//true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>使用箭头函数的例子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj =&#123;</span><br><span class="line">    a: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line">obj.a();	<span class="comment">// 打印出来的是window</span></span><br></pre></td></tr></table></figure>
-
-<p>​        上面这个例子中, 从作用域链上层(这里的上层也就是window)继承了this</p>
-<p>再来个例子:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">const</span> myObj = &#123;</span><br><span class="line">                    name: <span class="string">"hejian"</span>,</span><br><span class="line">                    greeting: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> myObj.greeting();</span><br><span class="line">            &#125;</span><br><span class="line">test();	<span class="comment">// 打印出来的是window</span></span><br></pre></td></tr></table></figure>
-
-<p>​        以上这个例子, 如果箭头函数像普通函数一样默认绑定<code>this</code>的话, 它的this应该指向<code>myObj</code>. 但是由于 <strong>箭头函数不会创建自己的this,它只会从自己的作用域链的上一层继承<code>this</code></strong>,  所以这里就向作用域链的上级<code>test()</code>这一层作用域中查询,test()是个普通函数默认有this, 那么查询到这里就结束了. 那么这个this指向哪里呢? 答案就是指向window! 为了方便理解例子的最后一行可以用这种方式写: <code>test.call(undefined)</code></p>
-<h4 id="二-不能用call方法修改箭头函数的this"><a href="#二-不能用call方法修改箭头函数的this" class="headerlink" title="(二)不能用call方法修改箭头函数的this"></a>(二)不能用call方法修改箭头函数的this</h4><p>​        由于 箭头函数没有自己的this指针，通过 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="noopener"><code>call()</code></a> <em>或</em> <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" target="_blank" rel="noopener"><code>apply()</code></a> 方法调用一个函数时，只能传递参数（不能绑定this），他们的第一个参数会被忽略。（这种现象对于bind方法同样成立）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> adder = &#123;</span><br><span class="line">  base : <span class="number">1</span>,</span><br><span class="line">  add : <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> f = <span class="function"><span class="params">v</span> =&gt;</span> v + <span class="keyword">this</span>.base;</span><br><span class="line">    <span class="keyword">return</span> f(a);</span><br><span class="line">  &#125;,</span><br><span class="line">  addThruCall: <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> f = <span class="function"><span class="params">v</span> =&gt;</span> v + <span class="keyword">this</span>.base;</span><br><span class="line">    <span class="keyword">var</span> b = &#123;</span><br><span class="line">      base : <span class="number">2</span></span><br><span class="line">    &#125;;        </span><br><span class="line">    <span class="keyword">return</span> f.call(b, a);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(adder.add(<span class="number">1</span>));         <span class="comment">// 输出 2</span></span><br><span class="line"><span class="built_in">console</span>.log(adder.addThruCall(<span class="number">1</span>)); <span class="comment">// 仍然输出 2（而不是3 ——译者注）</span></span><br></pre></td></tr></table></figure>
-
-<p>如上所示, 企图用call方法作用与箭头函数来手动指定this是行不通的.</p>
-<p><strong>参考:</strong></p>
-<ol>
-<li><a href="https://juejin.im/post/5aa1eb056fb9a028b77a66fd" target="_blank" rel="noopener">掘金 - JS中的箭头函数与this</a></li>
-<li><a href="https://codeburst.io/all-about-this-and-new-keywords-in-javascript-38039f71780c" target="_blank" rel="noopener">JavaScript - all about this keyword</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions" target="_blank" rel="noopener">MDN - 使用对象</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Working_with_Objects" target="_blank" rel="noopener">MDN - 使用函数</a></li>
-</ol>
+<p><code>isLive</code>函数做的事情就是: 先获取集合,  将其<code>lengh</code>赋值个<code>len1</code>, 然后从集合里面克隆一个元素并且添加到<code>body</code>下面, 接着将length赋值给<code>len2</code>, 然后为了不影响页面而删除添加的元素.如果是实时的那么集合的lenght肯定会跟着变化, 第二次赋值时的<code>lengh</code>就会和比第一次大1; 反之如果是静态的那么<code>length</code>根本不会有变化. 所以代码最后就比较了 <code>len1</code>和 <code>len2</code>相不相等, 做出了静态与实时的判断.</p>
 
       
     </div>
@@ -459,6 +454,8 @@
       
         <div class="post-tags">
           
+            <a href="/tags/html/" rel="tag"># html</a>
+          
             <a href="/tags/js/" rel="tag"># js</a>
           
         </div>
@@ -472,15 +469,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/08/05/JacaScript中的this/" rel="next" title="JavaScript中的this">
+                <i class="fa fa-chevron-left"></i> JavaScript中的this
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/06/HTMLCollection与NodeList/" rel="prev" title="HTMLCollection与NodeList">
-                HTMLCollection与NodeList <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -652,7 +649,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、理解常规函数中的this"><span class="nav-number">1.</span> <span class="nav-text">一、理解常规函数中的this</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-存粹的函数调用"><span class="nav-number">1.1.</span> <span class="nav-text">(一)存粹的函数调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-作为对象方法的调用"><span class="nav-number">1.2.</span> <span class="nav-text">(二)作为对象方法的调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三-构造函数中的this"><span class="nav-number">1.3.</span> <span class="nav-text">(三)构造函数中的this</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四-window-setTimeout-和window-setInterval-中函数的调用"><span class="nav-number">1.4.</span> <span class="nav-text">(四)window.setTimeout() 和window.setInterval()中函数的调用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、理解箭头函数中的this"><span class="nav-number">2.</span> <span class="nav-text">二、理解箭头函数中的this</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-箭头函数默认不绑定this"><span class="nav-number">2.1.</span> <span class="nav-text">(一)箭头函数默认不绑定this</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-不能用call方法修改箭头函数的this"><span class="nav-number">2.2.</span> <span class="nav-text">(二)不能用call方法修改箭头函数的this</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、HTMLCollection"><span class="nav-number">1.</span> <span class="nav-text">一、HTMLCollection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#属性"><span class="nav-number">1.1.</span> <span class="nav-text">属性:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法"><span class="nav-number">1.2.</span> <span class="nav-text">方法:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、NodeList"><span class="nav-number">2.</span> <span class="nav-text">二、NodeList</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#属性-1"><span class="nav-number">2.1.</span> <span class="nav-text">属性:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法-1"><span class="nav-number">2.2.</span> <span class="nav-text">方法:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结一下HTMLCollection和NodeList的主要区别就在于"><span class="nav-number">3.</span> <span class="nav-text">总结一下HTMLCollection和NodeList的主要区别就在于:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闲扯环节"><span class="nav-number">4.</span> <span class="nav-text">闲扯环节</span></a></li></ol></div>
             
 
           </div>
