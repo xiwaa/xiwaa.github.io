@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="一、HTMLCollectionHTMLCollection是一个包含了元素（元素顺序为文档流中的顺序）的通用集合（generic collection），是一个类数组对象, 它还提供了用来从该集合中选择元素的方法和属性。 HTML DOM 中的 HTMLCollection 是即时更新的（live当其; 所包含的文档结构发生改变时, 它会自动更新, 所以遍历的时候需要注意.  注意：由于历史原因">
+<meta name="description" content="一、HTMLCollectionHTMLCollection对象是一个包含了元素（元素顺序为文档流中的顺序）的通用集合（generic collection）, 它提供了用来从该集合中选择元素的方法和属性。 HTML DOM 中的 HTMLCollection 是即时更新的（当其所包含的文档结构发生改变时, 它会自动更新, 所以遍历的时候需要注意.  注意：由于历史原因（DOM4之前，实现该接口的">
 <meta name="keywords" content="html,js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTMLCollection与NodeList">
 <meta property="og:url" content="http://www.xiwaa.me/2019/08/06/HTMLCollection与NodeList/index.html">
 <meta property="og:site_name" content="Xiwaaの扣扣空间">
-<meta property="og:description" content="一、HTMLCollectionHTMLCollection是一个包含了元素（元素顺序为文档流中的顺序）的通用集合（generic collection），是一个类数组对象, 它还提供了用来从该集合中选择元素的方法和属性。 HTML DOM 中的 HTMLCollection 是即时更新的（live当其; 所包含的文档结构发生改变时, 它会自动更新, 所以遍历的时候需要注意.  注意：由于历史原因">
+<meta property="og:description" content="一、HTMLCollectionHTMLCollection对象是一个包含了元素（元素顺序为文档流中的顺序）的通用集合（generic collection）, 它提供了用来从该集合中选择元素的方法和属性。 HTML DOM 中的 HTMLCollection 是即时更新的（当其所包含的文档结构发生改变时, 它会自动更新, 所以遍历的时候需要注意.  注意：由于历史原因（DOM4之前，实现该接口的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-06T07:50:21.874Z">
+<meta property="og:updated_time" content="2019-08-06T09:26:08.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTMLCollection与NodeList">
-<meta name="twitter:description" content="一、HTMLCollectionHTMLCollection是一个包含了元素（元素顺序为文档流中的顺序）的通用集合（generic collection），是一个类数组对象, 它还提供了用来从该集合中选择元素的方法和属性。 HTML DOM 中的 HTMLCollection 是即时更新的（live当其; 所包含的文档结构发生改变时, 它会自动更新, 所以遍历的时候需要注意.  注意：由于历史原因">
+<meta name="twitter:description" content="一、HTMLCollectionHTMLCollection对象是一个包含了元素（元素顺序为文档流中的顺序）的通用集合（generic collection）, 它提供了用来从该集合中选择元素的方法和属性。 HTML DOM 中的 HTMLCollection 是即时更新的（当其所包含的文档结构发生改变时, 它会自动更新, 所以遍历的时候需要注意.  注意：由于历史原因（DOM4之前，实现该接口的">
 
 
 
@@ -384,12 +384,12 @@
       
 
       
-        <h3 id="一、HTMLCollection"><a href="#一、HTMLCollection" class="headerlink" title="一、HTMLCollection"></a><strong>一、HTMLCollection</strong></h3><p>HTMLCollection是一个包含了元素（元素顺序为文档流中的顺序）的通用集合（generic collection），是一个类数组对象, 它还提供了用来从该集合中选择元素的方法和属性。</p>
-<p><strong>HTML DOM 中的 <code>HTMLCollection</code> 是即时更新的（live当其; 所包含的文档结构发生改变时, 它会自动更新, 所以遍历的时候需要注意.</strong></p>
+        <h3 id="一、HTMLCollection"><a href="#一、HTMLCollection" class="headerlink" title="一、HTMLCollection"></a><strong>一、HTMLCollection</strong></h3><p>HTMLCollection对象是一个包含了元素（元素顺序为文档流中的顺序）的通用集合（generic collection）, 它提供了用来从该集合中选择元素的方法和属性。</p>
+<p><strong>HTML DOM 中的 <code>HTMLCollection</code> 是即时更新的（当其所包含的文档结构发生改变时, 它会自动更新, 所以遍历的时候需要注意.</strong></p>
 <blockquote>
-<p>注意：由于历史原因（DOM4之前，实现该接口的集合只能包含 HTML 元素），该接口被称为<code>HTMLCollection</code>。</p>
-<p>DOM有个节点树的概念, 节点(node)有不同种类, 例如<strong>元素节点</strong>、文本节点、属性节点… HTMLCollection中包含的HTML元素实际上就是元素节点</p>
-<p>nodeType一共有12种类:<br>元素节点            　　 Node.ELEMENT_NODE(1)<br>属性节点            　　 Node.ATTRIBUTE_NODE(2)<br>文本节点            　　 Node.TEXT_NODE(3)<br>CDATA节点                 Node.CDATA_SECTION_NODE(4)<br>实体引用名称节点     Node.ENTRY_REFERENCE_NODE(5)<br>实体名称节点        　 Node.ENTITY_NODE(6)<br>处理指令节点        　 Node.PROCESSING_INSTRUCTION_NODE(7)<br>注释节点            　     Node.COMMENT_NODE(8)<br>文档节点            　     Node.DOCUMENT_NODE(9)<br>文档类型节点        　 Node.DOCUMENT_TYPE_NODE(10)<br>文档片段节点        　 Node.DOCUMENT_FRAGMENT_NODE(11)<br>DTD声明节点             Node.NOTATION_NODE(12)</p>
+<p><em>注意：由于历史原因（DOM4之前，实现该接口的集合只能包含 HTML 元素），该接口被称为<code>HTMLCollection</code>。</em></p>
+<p><em>DOM有个节点树的概念, 节点(node)有不同种类, 例如*</em>元素节点<strong>、文本节点、属性节点… HTMLCollection中包含的HTML元素实际上就是</strong>元素节点***</p>
+<p><em>nodeType一共有12种类: 元素节点 , 属性节点, 文本节点 , CDATA节点 , 实体引用名称节点, 实体名节点 , 处理指令节点 , 注释节点 , 文档节点 , 文档类型节点 , 文档片段节点, DTD声明节点</em>             </p>
 </blockquote>
 <h4 id="属性"><a href="#属性" class="headerlink" title="属性:"></a><strong>属性:</strong></h4><ul>
 <li>HTMLCollection.length    </li>
@@ -402,12 +402,12 @@
 <ul>
 <li>HMLCollection.namedItem()</li>
 </ul>
-<p>​        根据 <code>Id</code>返回指定节点，或者作为备用，根据字符串所表示的 <code>name</code> 属性来匹配。根据 <code>name</code>匹配只能作为最后的依赖，并且只有当被引用的元素支持 <code>name</code> 属性时才能被匹配。如果不存在符合给定 <code>name</code>的节点，则返回 <code>null</code>。</p>
+<p>​        根据 <code>Id</code>返回指定节点，或者在不存在id的情况下根据字符串所表示的 <code>name</code> 属性来匹配。根据 <code>name</code>匹配只能作为最后的依赖，并且只有当被引用的元素支持 <code>name</code> 属性时才能被匹配。如果不存在符合给定 <code>name</code>的节点，则返回 <code>null</code>。</p>
 <h3 id="二、NodeList"><a href="#二、NodeList" class="headerlink" title="二、NodeList"></a><strong>二、NodeList</strong></h3><p><code>NodeList</code>对象是一个节点的集合, 是由<code>Node.childNodes</code>和<code>document.querySelectorAll()</code>返回的. NodeList是一个类数组(<code>Array-like</code>)的对象.</p>
 <p>在一些情况下, <code>NodeList</code>是一个实时的集合, 也就是说如果文档中的节点树发生变化, 已经存在的实时<code>NodeList</code>对象也会随之变化. 例如, <code>Node.childNodes</code>是实时的:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> parent = <span class="built_in">document</span>.getElementById(<span class="string">"parent"</span>);</span><br><span class="line"><span class="keyword">const</span> chld_nodes = parent.childNodes;</span><br><span class="line"><span class="built_in">console</span>.log(child_nodes.length);	<span class="comment">// 我们假设结果为2</span></span><br><span class="line">parent.appendChild(<span class="built_in">document</span>.createElement(<span class="string">"div"</span>));	</span><br><span class="line"><span class="built_in">console</span>.log(chid_nodes.length);		<span class="comment">//结果变成3了</span></span><br></pre></td></tr></table></figure>
 
-<p>在其他情况下, <code>NodeList</code>是一个静态集合, 也就意味着随后对文档对象模型的任何改动都不会影响集合的内容. 比兔<code>document.querySelectorAll()</code> 就会返回一个静态的<code>NodeList</code>. 最好牢记这种不同, 尤其是在对<code>NodeList</code>进行遍历的时候.</p>
+<p>在其他情况下, <code>NodeList</code>是一个静态集合, 也就意味着随后对文档对象模型的任何改动都不会影响集合的内容. 比如<code>document.querySelectorAll()</code> 会返回一个静态的<code>NodeList</code>. 最好牢记这种不同, 尤其是在对<code>NodeList</code>进行遍历的时候.</p>
 <h4 id="属性-1"><a href="#属性-1" class="headerlink" title="属性:"></a><strong>属性:</strong></h4><ul>
 <li>NodeList.length()</li>
 </ul>
@@ -428,8 +428,8 @@
 </li>
 </ul>
 <h3 id="总结一下HTMLCollection和NodeList的主要区别就在于"><a href="#总结一下HTMLCollection和NodeList的主要区别就在于" class="headerlink" title="总结一下HTMLCollection和NodeList的主要区别就在于:"></a><strong>总结一下HTMLCollection和NodeList的主要区别就在于:</strong></h3><ul>
-<li><code>NodeList</code>中可包含所有12中节点类型, <code>HTMLCollection</code>中只能包含元素节点这一种;</li>
-<li><code>NodeList</code>是类数组对象, 拥有<code>forEach()</code>, <code>entries()</code>, <code>keys()</code>等方法而<code>HTMLCollection</code>没有</li>
+<li><code>NodeList</code>中可包含所有12中节点类型, <code>HTMLCollection</code>中只能包含元素节点这一种.</li>
+<li><code>NodeList</code>是类数组对象, 拥有<code>forEach()</code>, <code>entries()</code>, <code>keys()</code>等方法而<code>HTMLCollection</code>没有.</li>
 <li><code>HTMLCollection</code>是实时的, 而<code>NodeList</code>既可以是实时(<code>node.childNodes</code>返回的是实时的)也可以是静态的(<code>node.querySelectorAll()</code>返回的是静态的).</li>
 </ul>
 <p>另外提一下, 这里谈论的<code>NodeList</code>的静态集合跟使用<code>jQuery</code>获取元素是相似的, 都是获取了就不变了. 好像有点像<code>Linux</code>上做快照(<code>snapshot</code>), 就记录那一瞬间, 哈哈.</p>
@@ -437,6 +437,14 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;isLive&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"c"</span> name=<span class="string">"myDiv"</span>&gt;C1&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;div class="c" name="myDiv"&gt;C2&lt;/</span>div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">isLive</span>(<span class="params">collection</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (collection.length &lt; <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">undefined</span>; </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">let</span> body = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>];</span><br><span class="line">                <span class="keyword">let</span> len1 = collection.length;</span><br><span class="line">                <span class="keyword">let</span> clone = collection.item(<span class="number">0</span>).cloneNode();</span><br><span class="line">                clone.style.display = <span class="string">"none"</span>;</span><br><span class="line">                body.appendChild(clone);</span><br><span class="line">                <span class="keyword">let</span> len2 = collection.length;</span><br><span class="line">                body.removeChild(clone);</span><br><span class="line">                <span class="keyword">return</span> len2 !== len1;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            divs1 = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'c'</span>);</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"document.getElementsByClassName('c'): "</span>,divs1.toString()); <span class="comment">//"[object HTMLCollection]"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            divs2 = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.c'</span>);</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"document.querySelectorAll('.c'): "</span>,divs2.toString()); <span class="comment">//"[object NodeList]"</span></span><br><span class="line"></span><br><span class="line">            divs3 = <span class="built_in">document</span>.getElementsByName(<span class="string">'myDiv'</span>);</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"document.getElementsByName('myDiv'): "</span>,divs3.toString()); <span class="comment">//"[object NodeList"]</span></span><br><span class="line"></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"isLive(divs1)"</span>,isLive(divs1)); <span class="comment">//true</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"isLive(divs2)"</span>,isLive(divs2)); <span class="comment">//false</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"isLive(divs3)"</span>,isLive(divs3)); <span class="comment">//true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><code>isLive</code>函数做的事情就是: 先获取集合,  将其<code>lengh</code>赋值个<code>len1</code>, 然后从集合里面克隆一个元素并且添加到<code>body</code>下面, 接着将length赋值给<code>len2</code>, 然后为了不影响页面而删除添加的元素.如果是实时的那么集合的lenght肯定会跟着变化, 第二次赋值时的<code>lengh</code>就会和比第一次大1; 反之如果是静态的那么<code>length</code>根本不会有变化. 所以代码最后就比较了 <code>len1</code>和 <code>len2</code>相不相等, 做出了静态与实时的判断.</p>
+<p><strong>参考:</strong></p>
+<ul>
+<li><a href="https://teamtreehouse.com/community/understanding-the-difference-between-an-htmlcollection-and-a-nodelist" target="_blank" rel="noopener">Understanding the difference between an HTMLCollection and a NodeList</a></li>
+<li><a href="https://stackoverflow.com/questions/15763358/difference-between-htmlcollection-nodelists-and-arrays-of-objects" target="_blank" rel="noopener">Difference between HTMLCollection, NodeLists, and arrays of objects</a>](<a href="https://stackoverflow.com/questions/15763358/difference-between-htmlcollection-nodelists-and-arrays-of-objects" target="_blank" rel="noopener">https://stackoverflow.com/questions/15763358/difference-between-htmlcollection-nodelists-and-arrays-of-objects</a>)</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection" target="_blank" rel="noopener">MDN - HTMLCollection</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList" target="_blank" rel="noopener">MDN - NodeList</a></li>
+<li><a href="https://www.w3school.com.cn/jsref/prop_node_nodetype.asp" target="_blank" rel="noopener">W3C - Node Types</a></li>
+</ul>
 
       
     </div>
