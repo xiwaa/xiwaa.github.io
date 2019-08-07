@@ -116,6 +116,8 @@ console.log(p.name); 	// Tom
 
 ​		***简单总结一下：函数完整的调用方法是使用call方法，包括`test.call(context, name)`和`obj.greet.call(context,name)`，这里的context就是函数调用时的上下文，也就是`this`，只不过这个this是可以通过call方法来修改的；构造函数稍微特殊一点，它的`this`直接指向new之后返回的对象；`window.setTimeout()`和`window.setInterval()`默认的是`this`是window对象。***
 
+----
+
 ### 二、理解箭头函数中的this
 
 ​		**箭头函数表达式**的语法比[函数表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/function)更简洁，并且没有自己的[this](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this)，[arguments](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments)，[super](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/super)或 [new.target](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new.target)。这些函数表达式更适用于那些本来需要匿名函数的地方，并且它们不能用作构造函数。
@@ -187,7 +189,7 @@ console.log(adder.addThruCall(1)); // 仍然输出 2（而不是3 ——译者�
 
 如上所示, 企图用call方法作用与箭头函数来手动指定this是行不通的.
 
-
+----
 
 **参考:**
 

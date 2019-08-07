@@ -8,27 +8,15 @@ categories: Programming
 
 ###	**一、HTMLCollection**
 
-HTMLCollection是一个包含了元素（元素顺序为文档流中的顺序）的通用集合（generic collection），是一个类数组对象, 它还提供了用来从该集合中选择元素的方法和属性。
+HTMLCollection对象是一个包含了元素（元素顺序为文档流中的顺序）的通用集合（generic collection）, 它提供了用来从该集合中选择元素的方法和属性。
 
-**HTML DOM 中的 `HTMLCollection` 是即时更新的（live当其; 所包含的文档结构发生改变时, 它会自动更新, 所以遍历的时候需要注意.**
+**HTML DOM 中的 `HTMLCollection` 是即时更新的（当其所包含的文档结构发生改变时, 它会自动更新, 所以遍历的时候需要注意.**
 
-> 注意：由于历史原因（DOM4之前，实现该接口的集合只能包含 HTML 元素），该接口被称为`HTMLCollection`。
+> *注意：由于历史原因（DOM4之前，实现该接口的集合只能包含 HTML 元素），该接口被称为`HTMLCollection`。*
 >
-> DOM有个节点树的概念, 节点(node)有不同种类, 例如**元素节点**、文本节点、属性节点... HTMLCollection中包含的HTML元素实际上就是元素节点
+> *DOM有个节点树的概念, 节点(node)有不同种类, 例如**元素节点**、文本节点、属性节点... HTMLCollection中包含的HTML元素实际上就是**元素节点***
 >
-> nodeType一共有12种类:
-> 元素节点            　　 Node.ELEMENT_NODE(1)
-> 属性节点            　　 Node.ATTRIBUTE_NODE(2)
-> 文本节点            　　 Node.TEXT_NODE(3)
-> CDATA节点                 Node.CDATA_SECTION_NODE(4)
-> 实体引用名称节点 	Node.ENTRY_REFERENCE_NODE(5)
-> 实体名称节点        　 Node.ENTITY_NODE(6)
-> 处理指令节点        　 Node.PROCESSING_INSTRUCTION_NODE(7)
-> 注释节点            　 	Node.COMMENT_NODE(8)
-> 文档节点            　 	Node.DOCUMENT_NODE(9)
-> 文档类型节点        　 Node.DOCUMENT_TYPE_NODE(10)
-> 文档片段节点        　 Node.DOCUMENT_FRAGMENT_NODE(11)
-> DTD声明节点             Node.NOTATION_NODE(12)
+> *nodeType一共有12种类: 元素节点 , 属性节点, 文本节点 , CDATA节点 , 实体引用名称节点, 实体名节点 , 处理指令节点 , 注释节点 , 文档节点 , 文档类型节点 , 文档片段节点, DTD声明节点*             
 
 ####	**属性:**	
 
@@ -44,9 +32,9 @@ HTMLCollection是一个包含了元素（元素顺序为文档流中的顺序）
 
 + HMLCollection.namedItem()
 
-​		根据 `Id `返回指定节点，或者作为备用，根据字符串所表示的 `name` 属性来匹配。根据 `name `匹配只能作为最后的依赖，并且只有当被引用的元素支持 `name` 属性时才能被匹配。如果不存在符合给定 `name `的节点，则返回 `null`。
+​		根据 `Id `返回指定节点，或者在不存在id的情况下根据字符串所表示的 `name` 属性来匹配。根据 `name `匹配只能作为最后的依赖，并且只有当被引用的元素支持 `name` 属性时才能被匹配。如果不存在符合给定 `name `的节点，则返回 `null`。
 
-
+--------
 
 ###	**二、NodeList**
 
@@ -62,7 +50,7 @@ parent.appendChild(document.createElement("div"));
 console.log(chid_nodes.length);		//结果变成3了
 ```
 
-在其他情况下, `NodeList`是一个静态集合, 也就意味着随后对文档对象模型的任何改动都不会影响集合的内容. 比兔`document.querySelectorAll()` 就会返回一个静态的`NodeList`. 最好牢记这种不同, 尤其是在对`NodeList`进行遍历的时候.
+在其他情况下, `NodeList`是一个静态集合, 也就意味着随后对文档对象模型的任何改动都不会影响集合的内容. 比如`document.querySelectorAll()` 会返回一个静态的`NodeList`. 最好牢记这种不同, 尤其是在对`NodeList`进行遍历的时候.
 
 #### **属性:**
 
@@ -87,16 +75,20 @@ console.log(chid_nodes.length);		//结果变成3了
 - [`NodeList.values()`](https://developer.mozilla.org/zh-CN/docs/Web/API/NodeList/values)
 
     Returns an [`iterator`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols) allowing code to go through all values (nodes) of the key/value pairs contained in the collection.
+    
+    
+
+--------
 
 ### **总结一下HTMLCollection和NodeList的主要区别就在于:**
 
-+ `NodeList`中可包含所有12中节点类型, `HTMLCollection`中只能包含元素节点这一种;
-+ `NodeList`是类数组对象, 拥有`forEach()`, `entries()`, `keys()`等方法而`HTMLCollection`没有
++ `NodeList`中可包含所有12中节点类型, `HTMLCollection`中只能包含元素节点这一种.
++ `NodeList`是类数组对象, 拥有`forEach()`, `entries()`, `keys()`等方法而`HTMLCollection`没有.
 + `HTMLCollection`是实时的, 而`NodeList`既可以是实时(`node.childNodes`返回的是实时的)也可以是静态的(`node.querySelectorAll()`返回的是静态的).
 
 另外提一下, 这里谈论的`NodeList`的静态集合跟使用`jQuery`获取元素是相似的, 都是获取了就不变了. 好像有点像`Linux`上做快照(`snapshot`), 就记录那一瞬间, 哈哈.
 
-
+--------
 
 ### ***闲扯环节***
 
@@ -150,3 +142,13 @@ console.log(chid_nodes.length);		//结果变成3了
 ```
 
 `isLive`函数做的事情就是: 先获取集合,  将其`lengh`赋值个`len1`, 然后从集合里面克隆一个元素并且添加到`body`下面, 接着将length赋值给`len2`, 然后为了不影响页面而删除添加的元素.如果是实时的那么集合的lenght肯定会跟着变化, 第二次赋值时的`lengh`就会和比第一次大1; 反之如果是静态的那么`length`根本不会有变化. 所以代码最后就比较了 `len1 `和 `len2 `相不相等, 做出了静态与实时的判断.
+
+--------
+
+**参考:**
+
++ [Understanding the difference between an HTMLCollection and a NodeList](https://teamtreehouse.com/community/understanding-the-difference-between-an-htmlcollection-and-a-nodelist)
++ [Difference between HTMLCollection, NodeLists, and arrays of objects](https://stackoverflow.com/questions/15763358/difference-between-htmlcollection-nodelists-and-arrays-of-objects)
++ [MDN \- HTMLCollection](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection)
++ [MDN \- NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList)
++ [W3C \- Node Types](https://www.w3school.com.cn/jsref/prop_node_nodetype.asp)
