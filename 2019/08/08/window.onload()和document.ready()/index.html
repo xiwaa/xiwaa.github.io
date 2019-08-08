@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="js,">
+  <meta name="keywords" content="js,DOM,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="一、理解常规函数中的this​        this指的是运行当前这段函数代码的对象,或者说指的是函数运行时所在的环境.  12345678910var obj = &amp;#123;  foo: function () &amp;#123; console.log(this.bar) &amp;#125;,  bar: 1&amp;#125;;var foo = obj.foo;var bar = 2;obj.foo()">
-<meta name="keywords" content="js">
+<meta name="description" content="$(document).ready与window.onload的区别首先需要明确window.onload属性是原生js的, 而$(document).ready是属于jQuery的, 要用后者需要先引入jQuery. 二者的区别在于$(document).ready事件发生在DOM已经完全加载(也就是DOM tree已经构建好), 做好了给JacaScript操作它们的准备了之后, 而windo">
+<meta name="keywords" content="js,DOM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript中的this">
-<meta property="og:url" content="http://www.xiwaa.me/2019/08/05/JacaScript中的this/index.html">
+<meta property="og:title" content="window.onload和$(document).ready">
+<meta property="og:url" content="http://www.xiwaa.me/2019/08/08/window.onload()和document.ready()/index.html">
 <meta property="og:site_name" content="Xiwaaの扣扣空间">
-<meta property="og:description" content="一、理解常规函数中的this​        this指的是运行当前这段函数代码的对象,或者说指的是函数运行时所在的环境.  12345678910var obj = &amp;#123;  foo: function () &amp;#123; console.log(this.bar) &amp;#125;,  bar: 1&amp;#125;;var foo = obj.foo;var bar = 2;obj.foo()">
+<meta property="og:description" content="$(document).ready与window.onload的区别首先需要明确window.onload属性是原生js的, 而$(document).ready是属于jQuery的, 要用后者需要先引入jQuery. 二者的区别在于$(document).ready事件发生在DOM已经完全加载(也就是DOM tree已经构建好), 做好了给JacaScript操作它们的准备了之后, 而windo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-06T09:33:17.512Z">
+<meta property="og:updated_time" content="2019-08-08T03:37:41.284Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript中的this">
-<meta name="twitter:description" content="一、理解常规函数中的this​        this指的是运行当前这段函数代码的对象,或者说指的是函数运行时所在的环境.  12345678910var obj = &amp;#123;  foo: function () &amp;#123; console.log(this.bar) &amp;#125;,  bar: 1&amp;#125;;var foo = obj.foo;var bar = 2;obj.foo()">
+<meta name="twitter:title" content="window.onload和$(document).ready">
+<meta name="twitter:description" content="$(document).ready与window.onload的区别首先需要明确window.onload属性是原生js的, 而$(document).ready是属于jQuery的, 要用后者需要先引入jQuery. 二者的区别在于$(document).ready事件发生在DOM已经完全加载(也就是DOM tree已经构建好), 做好了给JacaScript操作它们的准备了之后, 而windo">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.xiwaa.me/2019/08/05/JacaScript中的this/">
+  <link rel="canonical" href="http://www.xiwaa.me/2019/08/08/window.onload()和document.ready()/">
 
 
 
 
 
-  <title>JavaScript中的this | Xiwaaの扣扣空间</title>
+  <title>window.onload和$(document).ready | Xiwaaの扣扣空间</title>
   
 
 
@@ -295,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.xiwaa.me/2019/08/05/JacaScript中的this/">
+    <link itemprop="mainEntityOfPage" href="http://www.xiwaa.me/2019/08/08/window.onload()和document.ready()/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xiwaa">
@@ -312,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript中的this</h1>
+          <h1 class="post-title" itemprop="name headline">window.onload和$(document).ready</h1>
         
 
         <div class="post-meta">
@@ -324,8 +324,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-05T11:45:35+08:00">
-                2019-08-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T09:19:14+08:00">
+                2019-08-08
               </time>
             
 
@@ -384,66 +384,52 @@
       
 
       
-        <h3 id="一、理解常规函数中的this"><a href="#一、理解常规函数中的this" class="headerlink" title="一、理解常规函数中的this"></a>一、理解常规函数中的this</h3><p>​        this指的是运行当前这段函数代码的对象,或者说指的是函数运行时所在的环境. </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  foo: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>.bar) &#125;,</span><br><span class="line">  bar: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = obj.foo;</span><br><span class="line"><span class="keyword">var</span> bar = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">obj.foo() <span class="comment">// 1</span></span><br><span class="line">foo() <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
-
-<p>​        对于<code>obj.foo()</code>来说, <code>foo</code>运行在<code>obj</code>环境, 调用者是<code>obj</code>, 所以this指向<code>obj</code>; 对于<code>foo()</code>来说, <code>foo</code>运行在全局环境,  调用者是window, 所以<code>this</code>指向全局环境. 不同环境不同作用域读取到的变量不同很正常, 所以两者的运行结果会不一样.</p>
-<p>​        这里我们要谈到一个叫执行上下文的玩意儿. JavaScript中执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。对于每个执行上下文，都有三个重要属性：变量对象(Variable object，VO), 作用域链(Scope chain)和this.</p>
-<p>​        一个函数定义之后可以在很多不同的地方被调用,  函数内部的this就在函数运行时指明了执行上下文, 也就是说明了<strong>是哪个家伙 在哪里 调戏(调用)了我</strong>. 这时候函数内部就能知道作用域是什么,有哪些变量是自己可以读取到的. 简单地说,要知道<code>this</code>指向什么, 我们只<strong>需要搞清楚函数是在什么时候什么地方被谁如何被调用的</strong>即可, 并不需要关注函数在哪里定义或声明.</p>
-<p>​        <code>this</code>是使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="noopener"><code>call()</code></a>方法调用函数时传递的第一个参数, 他可以在函数调用时修改, 在函数没有调用的时候, this的值是无法确定的.</p>
-<p>​        接下来具体看看函数的调用, 以及不同情况下this指向哪里, 我们会借助call()方法来帮助理解.</p>
-<h4 id="一-存粹的函数调用"><a href="#一-存粹的函数调用" class="headerlink" title="(一)存粹的函数调用"></a>(一)存粹的函数调用</h4><p>​        第一种方法最常见, 例子如下:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">true<span class="built_in">console</span>.log(name);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">test(<span class="string">"Jerry"</span>);</span><br></pre></td></tr></table></figure>
-
-<p>​        这种方法我们平常使用的最多,但是这种函数调用方法只是一种简写,它完整的写法是下面这样的:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">test.call(<span class="literal">undefined</span>, <span class="string">"Tom"</span>);</span><br></pre></td></tr></table></figure>
-
-<p>​        注意上面的<code>call</code>方法, <strong><code>call</code>方法接收的第一个参数就是this, 这里我们传了一个<code>undefined</code></strong>. 那么,依据定义,函数执行之后<code>console.log()</code>出来的会是<code>undefined</code>吗? 不是! (传入null或者undefined默认代表window对象)</p>
-<p>​        所以在这里调用test函数的是window, <code>this</code>就是指向的window全局对象. 执行上下文也就是全局执行上下文了. </p>
-<h4 id="二-作为对象方法的调用"><a href="#二-作为对象方法的调用" class="headerlink" title="(二)作为对象方法的调用"></a>(二)作为对象方法的调用</h4><p>​        函数还可以作为某个对象的方法调用,这时候一般<code>this</code>就指这个上级对象. (用call()方法可以例外哦)</p>
-<p>例子:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">"Jerry"</span>,</span><br><span class="line">    greet: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">true&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.greet();	<span class="comment">// 第一种调用方式</span></span><br><span class="line">obj.greet.call(obj) 	<span class="comment">//第二种调用方式</span></span><br></pre></td></tr></table></figure>
-
-<p>​        以上例子中的第一种调用方式实际上只是第二种方式的语法糖, 第二种才是完整的调用方法, <strong>第二种方法厉害的地方就在于它可以手动指定this.</strong></p>
-<p>手动指定<code>this</code>的例子:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">"Jerry"</span>,</span><br><span class="line">    greet: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">truetrue<span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.greet.call(&#123;<span class="attr">name</span>: <span class="string">"Trump"</span>&#125;); 	<span class="comment">// 打出来是 Trump</span></span><br></pre></td></tr></table></figure>
-
-<p>​        上面例子<code>call</code>方法调用函数时传入的是一个对象, 这个对象就是手动指定的<code>this</code>, 因此<code>greet()</code>行数中<code>console.log(this.name)</code>打印出来的就是Trump了. 这个例子也验证了文章第一段所说的:</p>
+        <h3 id="document-ready与window-onload的区别"><a href="#document-ready与window-onload的区别" class="headerlink" title="$(document).ready与window.onload的区别"></a>$(document).ready与window.onload的区别</h3><p>首先需要明确window.onload属性是原生js的, 而$(document).ready是属于jQuery的, 要用后者需要先引入jQuery.</p>
+<p>二者的区别在于$(document).ready事件发生在<strong>DOM已经完全加载(也就是DOM tree已经构建好), 做好了给JacaScript操作它们的准备了</strong>之后, 而window.onload事件发生在整个窗口页面和资源完全加载之后, 它不仅仅需要DOM加载完成, 还需要图片、iframe、CSS文件、JS等这些内容都加载好.  所以window.onload()事件发生的更晚是显而易见的.</p>
+<p>来瞄一眼jQuery的文档是如何描述的:</p>
 <blockquote>
-<p>我们只需要搞清楚函数是在什么时候什么地方如何被调用的即可, 并不需要关注函数在哪里定义或声明.</p>
+<p>In most cases, the script can be run as soon as the DOM hierarchy has been fully constructed.</p>
+<p>A page can’t be manipulated safely until the document is “ready.” jQuery detects this state of readiness for you. Code included inside <code>$( document ).ready()</code> will only run once the page Document Object Model (DOM) is ready for JavaScript code to execute. Code included inside <code>$( window ).on( &quot;load&quot;, function() { ... })</code> will run once the entire page (images or iframes), not just the DOM, is ready.</p>
 </blockquote>
-<h4 id="三-构造函数中的this"><a href="#三-构造函数中的this" class="headerlink" title="(三)构造函数中的this"></a>(三)构造函数中的this</h4><p>​        构造函数中的<code>this</code>有一点特殊, 每个构造函数在new之后都会返回一个实例对象, <code>this</code>就指这个实例对象.</p>
-<p>例子:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">true<span class="keyword">this</span>.name = <span class="string">"Tom"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Test();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> p); 	<span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(p.name); 	<span class="comment">// Tom</span></span><br></pre></td></tr></table></figure>
+<p>二者还有个 区别是window.onload只能用一次而$(document).ready可以多次使用(例如有多个js库时可能需要多次用从而做各自特定需要的操作). window.onload这种页面加载事件, 一个页面就能用一次, 很容易理解嘛, 如果硬要多次使用的话那就会造成后面的覆盖掉前面的, 就跟变量重新赋值似的.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"1"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">true<span class="built_in">console</span>.log(<span class="string">"2"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 最终的结果就是后一个覆盖掉前一个, 打印出2.</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="四-window-setTimeout-和window-setInterval-中函数的调用"><a href="#四-window-setTimeout-和window-setInterval-中函数的调用" class="headerlink" title="(四)window.setTimeout() 和window.setInterval()中函数的调用"></a>(四)window.setTimeout() 和window.setInterval()中函数的调用</h4><p>​        他们两个函数中的<code>this</code>有些特殊,里面的<code>this</code>默认是<code>window</code>对象.</p>
-<p>​        <strong><em>简单总结一下：函数完整的调用方法是使用call方法，包括<code>test.call(context, name)</code>和<code>obj.greet.call(context,name)</code>，这里的context就是函数调用时的上下文，也就是<code>this</code>，只不过这个this是可以通过call方法来修改的；构造函数稍微特殊一点，它的<code>this</code>直接指向new之后返回的对象；<code>window.setTimeout()</code>和<code>window.setInterval()</code>默认的是<code>this</code>是window对象。</em></strong></p>
+<p>正常的做法是把函数加到一个window.onload里面:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    func1();</span><br><span class="line">    func2();</span><br><span class="line">    func3();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面这样挺好了, 可是如果函数太多的话也挺难看的, 也不够灵活. 所以可以如下定义一个addLoadEvent函数:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addLoadEvent</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> oldOnload = <span class="built_in">window</span>.onload;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span>	<span class="built_in">window</span>.onload != <span class="string">"function"</span>) &#123;</span><br><span class="line">        <span class="built_in">window</span>.onload = func;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">truetruetruelodOnload();</span><br><span class="line">            func();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码做了如下事情:</p>
+<ol>
+<li><p>把现有的window.onload事件处理函数的值存入变量oldonload。</p>
+</li>
+<li><p>如果在这个处理函数上还没有绑定的任何函数，则使用window.οnlοad=func直接调用，不需要加括号</p>
+</li>
+<li><p>如果在这个处理函数上已经绑定了一些函数，就把新的函数追加到现在指令的末尾。</p>
+</li>
+</ol>
+<p>现在, 如果某个函数需要在window.onload事件触发的时候立即执行的话, 我们只需要像下面这样:</p>
+<p>addLoadEvent(func1);</p>
+<p>addLoadEvent(func2);</p>
+<p>你爱加多少加多少, 爱在哪儿加在哪儿加, 也很清晰明白.</p>
 <hr>
-<h3 id="二、理解箭头函数中的this"><a href="#二、理解箭头函数中的this" class="headerlink" title="二、理解箭头函数中的this"></a>二、理解箭头函数中的this</h3><p>​        <strong>箭头函数表达式</strong>的语法比<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/function" target="_blank" rel="noopener">函数表达式</a>更简洁，并且没有自己的<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this" target="_blank" rel="noopener">this</a>，<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments" target="_blank" rel="noopener">arguments</a>，<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/super" target="_blank" rel="noopener">super</a>或 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new.target" target="_blank" rel="noopener">new.target</a>。这些函数表达式更适用于那些本来需要匿名函数的地方，并且它们不能用作构造函数。</p>
-<h4 id="一-箭头函数默认不绑定this"><a href="#一-箭头函数默认不绑定this" class="headerlink" title="(一)箭头函数默认不绑定this"></a>(一)箭头函数默认不绑定this</h4><p>​        在箭头函数出现之前，每个新定义的函数都有它自己的 <code>this</code>值（在构造函数的情况下是一个新对象，在严格模式的函数调用中为 undefined，如果该函数被作为“对象方法”调用则为基础对象等）。<code>this</code>被证明是令人厌烦的面向对象风格的编程。<strong>箭头函数不会创建自己的this,它只会从自己的作用域链的上一层继承this。</strong></p>
-<p>不使用箭头函数的例子:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    a: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.a();	<span class="comment">// 打印出的是obj对象</span></span><br></pre></td></tr></table></figure>
+<h3 id="DOMContentLoaded事件"><a href="#DOMContentLoaded事件" class="headerlink" title="DOMContentLoaded事件"></a>DOMContentLoaded事件</h3><p>当初始的 <strong>HTML</strong> 文档被完全加载和解析完成之后，<strong>DOMContentLoaded</strong> 事件被触发，而无需等待样式表、图像和子框架的完成加载。另一个不同的事件 <code>load</code>应该仅用于检测一个完全加载的页面。 在使用 <code>DOMContentLoaded</code> 更加合适的情况下使用 <a href="https://developer.mozilla.org/en-US/docs/Mozilla_event_reference/load" target="_blank" rel="noopener"><code>load</code></a> 是一个令人难以置信的流行的错误，所以要谨慎。注意：<strong>DOMContentLoaded</strong> 事件必须等待其所属script之前的样式表加载解析完成才会触发。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//需要执行的代码；</span></span><br><span class="line">&#125;,<span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
 
-<p>使用箭头函数的例子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj =&#123;</span><br><span class="line">    a: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line">obj.a();	<span class="comment">// 打印出来的是window</span></span><br></pre></td></tr></table></figure>
+<p>DOMContentLonded效果跟$(document).ready相似, 但是不同浏览器有兼容问题. 例如IE低版本浏览器就没有这个事件，而所有浏览器均支持的onreadystatechange 事件能辨识readyState 属性的改变，在readyState 属性为complete时，DOM树构建完毕，这样就可以封装一个兼容低版本的框架</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">DOMReady</span>(<span class="params">func</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">document</span>.addEventListener)&#123;   <span class="comment">//高级浏览器支持      		  document.addEventListener('DOMContentLoaded',function()&#123;</span></span><br><span class="line">            func &amp;&amp; func();</span><br><span class="line">        &#125;,<span class="literal">false</span>)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;                    <span class="comment">//低版本浏览器使用</span></span><br><span class="line">        <span class="built_in">document</span>.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">document</span>.readyState == <span class="string">'complete'</span>)&#123;</span><br><span class="line">                func &amp;&amp; func();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>​        上面这个例子中, 从作用域链上层(这里的上层也就是window)继承了this</p>
-<p>再来个例子:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">const</span> myObj = &#123;</span><br><span class="line">                    name: <span class="string">"hejian"</span>,</span><br><span class="line">                    greeting: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> myObj.greeting();</span><br><span class="line">            &#125;</span><br><span class="line">test();	<span class="comment">// 打印出来的是window</span></span><br></pre></td></tr></table></figure>
-
-<p>​        以上这个例子, 如果箭头函数像普通函数一样默认绑定<code>this</code>的话, 它的this应该指向<code>myObj</code>. 但是由于 <strong>箭头函数不会创建自己的this,它只会从自己的作用域链的上一层继承<code>this</code></strong>,  所以这里就向作用域链的上级<code>test()</code>这一层作用域中查询,test()是个普通函数默认有this, 那么查询到这里就结束了. 那么这个this指向哪里呢? 答案就是指向window! 为了方便理解例子的最后一行可以用这种方式写: <code>test.call(undefined)</code></p>
-<h4 id="二-不能用call方法修改箭头函数的this"><a href="#二-不能用call方法修改箭头函数的this" class="headerlink" title="(二)不能用call方法修改箭头函数的this"></a>(二)不能用call方法修改箭头函数的this</h4><p>​        由于 箭头函数没有自己的this指针，通过 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="noopener"><code>call()</code></a> <em>或</em> <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" target="_blank" rel="noopener"><code>apply()</code></a> 方法调用一个函数时，只能传递参数（不能绑定this），他们的第一个参数会被忽略。（这种现象对于bind方法同样成立）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> adder = &#123;</span><br><span class="line">  base : <span class="number">1</span>,</span><br><span class="line">  add : <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> f = <span class="function"><span class="params">v</span> =&gt;</span> v + <span class="keyword">this</span>.base;</span><br><span class="line">    <span class="keyword">return</span> f(a);</span><br><span class="line">  &#125;,</span><br><span class="line">  addThruCall: <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> f = <span class="function"><span class="params">v</span> =&gt;</span> v + <span class="keyword">this</span>.base;</span><br><span class="line">    <span class="keyword">var</span> b = &#123;</span><br><span class="line">      base : <span class="number">2</span></span><br><span class="line">    &#125;;        </span><br><span class="line">    <span class="keyword">return</span> f.call(b, a);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(adder.add(<span class="number">1</span>));         <span class="comment">// 输出 2</span></span><br><span class="line"><span class="built_in">console</span>.log(adder.addThruCall(<span class="number">1</span>)); <span class="comment">// 仍然输出 2（而不是3 ——译者注）</span></span><br></pre></td></tr></table></figure>
-
-<p>如上所示, 企图用call方法作用与箭头函数来手动指定this是行不通的.</p>
 <hr>
 <p><strong>参考:</strong></p>
-<ol>
-<li><a href="https://juejin.im/post/5aa1eb056fb9a028b77a66fd" target="_blank" rel="noopener">掘金 - JS中的箭头函数与this</a></li>
-<li><a href="https://codeburst.io/all-about-this-and-new-keywords-in-javascript-38039f71780c" target="_blank" rel="noopener">JavaScript - all about this keyword</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions" target="_blank" rel="noopener">MDN - 使用对象</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Working_with_Objects" target="_blank" rel="noopener">MDN - 使用函数</a></li>
-</ol>
+<ul>
+<li><a href="https://www.techiediaries.com/javascript/document-ready-vs-window-onload-vs-window-load/" target="_blank" rel="noopener"> $(document).ready() vs window.onload() vs $(window).load()</a></li>
+<li><a href="https://stackoverflow.com/questions/1324568/is-document-ready-also-css-ready" target="_blank" rel="noopener">stackoverflow - Is $(document).ready() also CSS ready?</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded" target="_blank" rel="noopener">MDN - DOMContentLoaded</a></li>
+<li><a href="https://www.jianshu.com/p/9997836f2351" target="_blank" rel="noopener">简书 - DOMContentLoaded</a></li>
+<li><a href="https://blog.csdn.net/baidu_25343343/article/details/72639093" target="_blank" rel="noopener">关于JS的window.onload()方法</a></li>
+<li><a href="https://bitsofco.de/what-exactly-is-the-dom/" target="_blank" rel="noopener">What, exactly, is the DOM?</a></li>
+</ul>
 
       
     </div>
@@ -463,6 +449,8 @@
           
             <a href="/tags/js/" rel="tag"># js</a>
           
+            <a href="/tags/DOM/" rel="tag"># DOM</a>
+          
         </div>
       
 
@@ -474,15 +462,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/08/07/a标签的点击事件和屏蔽跳转/" rel="next" title="a标签的点击事件和屏蔽跳转">
+                <i class="fa fa-chevron-left"></i> a标签的点击事件和屏蔽跳转
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/06/HTMLCollection与NodeList/" rel="prev" title="HTMLCollection与NodeList">
-                HTMLCollection与NodeList <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -654,7 +642,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、理解常规函数中的this"><span class="nav-number">1.</span> <span class="nav-text">一、理解常规函数中的this</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-存粹的函数调用"><span class="nav-number">1.1.</span> <span class="nav-text">(一)存粹的函数调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-作为对象方法的调用"><span class="nav-number">1.2.</span> <span class="nav-text">(二)作为对象方法的调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三-构造函数中的this"><span class="nav-number">1.3.</span> <span class="nav-text">(三)构造函数中的this</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四-window-setTimeout-和window-setInterval-中函数的调用"><span class="nav-number">1.4.</span> <span class="nav-text">(四)window.setTimeout() 和window.setInterval()中函数的调用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、理解箭头函数中的this"><span class="nav-number">2.</span> <span class="nav-text">二、理解箭头函数中的this</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-箭头函数默认不绑定this"><span class="nav-number">2.1.</span> <span class="nav-text">(一)箭头函数默认不绑定this</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-不能用call方法修改箭头函数的this"><span class="nav-number">2.2.</span> <span class="nav-text">(二)不能用call方法修改箭头函数的this</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#document-ready与window-onload的区别"><span class="nav-number">1.</span> <span class="nav-text">$(document).ready与window.onload的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOMContentLoaded事件"><span class="nav-number">2.</span> <span class="nav-text">DOMContentLoaded事件</span></a></li></ol></div>
             
 
           </div>

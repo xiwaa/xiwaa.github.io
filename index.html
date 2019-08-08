@@ -294,6 +294,155 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.xiwaa.me/2019/08/08/window.onload()和document.ready()/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xiwaa">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xiwaaの扣扣空间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/08/window.onload()和document.ready()/" itemprop="url">window.onload和$(document).ready</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T09:19:14+08:00">
+                2019-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index">
+                    <span itemprop="name">Programming</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          $(document).ready与window.onload的区别首先需要明确window.onload属性是原生js的, 而$(document).ready是属于jQuery的, 要用后者需要先引入jQuery.
+二者的区别在于$(document).ready事件发生在DOM已经完全加载(也
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/08/window.onload()和document.ready()/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.xiwaa.me/2019/08/07/a标签的点击事件和屏蔽跳转/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -387,12 +536,12 @@
       
         
           
-          常用的屏蔽href跳转的方法不让跳, 就两个思路嘛:
+          常用的屏蔽href跳转的方法不让跳, 一般有两个思路:
 
 第一个思路就是把href干掉, 没有有效地址看你还往哪跳; 
 第二个思路就是href地址是有效的我也无所谓, 直接把你默认跳转这个行为艺术给禁咯.
 
-方法一(思路1)1&lt;a href="javascript:void(0)" onclic
+个人认为第一种思路是简单粗暴的, 是不可取的, 第二种才是正确的途径. 我们应当保证HTML
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -780,7 +929,7 @@ HTML DOM 中的 HTMLCollection 是即时更新的（当其所包含的文档结�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -802,7 +951,7 @@ HTML DOM 中的 HTMLCollection 是即时更新的（当其所包含的文档结�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
