@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Xiwaaの扣扣空间">
 <meta property="og:description" content="一、理解常规函数中的this​        this指的是运行当前这段函数代码的对象,或者说指的是函数运行时所在的环境.  12345678910var obj = &amp;#123;  foo: function () &amp;#123; console.log(this.bar) &amp;#125;,  bar: 1&amp;#125;;var foo = obj.foo;var bar = 2;obj.foo()">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-06T09:33:17.512Z">
+<meta property="og:updated_time" content="2019-08-09T12:51:41.634Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript中的this">
 <meta name="twitter:description" content="一、理解常规函数中的this​        this指的是运行当前这段函数代码的对象,或者说指的是函数运行时所在的环境.  12345678910var obj = &amp;#123;  foo: function () &amp;#123; console.log(this.bar) &amp;#125;,  bar: 1&amp;#125;;var foo = obj.foo;var bar = 2;obj.foo()">
@@ -98,7 +98,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":true},
     fancybox: true,
@@ -161,7 +161,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">持续更新幼儿园作文</p>
       
   </div>
 
@@ -387,10 +387,10 @@
         <h3 id="一、理解常规函数中的this"><a href="#一、理解常规函数中的this" class="headerlink" title="一、理解常规函数中的this"></a>一、理解常规函数中的this</h3><p>​        this指的是运行当前这段函数代码的对象,或者说指的是函数运行时所在的环境. </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  foo: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>.bar) &#125;,</span><br><span class="line">  bar: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = obj.foo;</span><br><span class="line"><span class="keyword">var</span> bar = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">obj.foo() <span class="comment">// 1</span></span><br><span class="line">foo() <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
 
-<p>​        对于<code>obj.foo()</code>来说, <code>foo</code>运行在<code>obj</code>环境, 调用者是<code>obj</code>, 所以this指向<code>obj</code>; 对于<code>foo()</code>来说, <code>foo</code>运行在全局环境,  调用者是window, 所以<code>this</code>指向全局环境. 不同环境不同作用域读取到的变量不同很正常, 所以两者的运行结果会不一样.</p>
-<p>​        这里我们要谈到一个叫执行上下文的玩意儿. JavaScript中执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。对于每个执行上下文，都有三个重要属性：变量对象(Variable object，VO), 作用域链(Scope chain)和this.</p>
-<p>​        一个函数定义之后可以在很多不同的地方被调用,  函数内部的this就在函数运行时指明了执行上下文, 也就是说明了<strong>是哪个家伙 在哪里 调戏(调用)了我</strong>. 这时候函数内部就能知道作用域是什么,有哪些变量是自己可以读取到的. 简单地说,要知道<code>this</code>指向什么, 我们只<strong>需要搞清楚函数是在什么时候什么地方被谁如何被调用的</strong>即可, 并不需要关注函数在哪里定义或声明.</p>
-<p>​        <code>this</code>是使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="noopener"><code>call()</code></a>方法调用函数时传递的第一个参数, 他可以在函数调用时修改, 在函数没有调用的时候, this的值是无法确定的.</p>
+<p>​        对于<code>obj.foo()</code>来说, <code>foo</code>运行在<code>obj</code>环境, 调用者是<code>obj</code>, 所以this指向<code>obj</code>; 对于<code>foo()</code>来说, <code>foo</code>运行在全局环境,  调用者是window, 所以<code>this</code>指向代表全局环境的window. 不同环境不同作用域读取到的变量往往不同, 所以二者的运行结果不一样.</p>
+<p>​        这里我们要谈到一个叫执行上下文的东西. JavaScript中执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。对于每个执行上下文，都有三个重要属性：变量对象(Variable object，VO), 作用域链(Scope chain)和this.</p>
+<p>​        一个函数定义之后可以在很多不同的地方被调用,  函数内部的this就在函数运行时指明了执行上下文, 也就是表明了<strong>是哪个家伙 在哪里 调戏(调用)了我</strong>. 这时候函数内部就能知道作用域是什么,有哪些变量是自己可以读取到的. 简单地说,要知道<code>this</code>指向什么, 我们只<strong>需要搞清楚函数是在什么时候什么地方被谁如何被调用的</strong>即可, 并不需要关注函数在哪里定义或声明.</p>
+<p>​        <code>this</code>是使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="noopener"><code>call()</code></a>方法调用函数时传递的第一个参数(call方法一共2个参数, 第一个由于绑定this, 第二个是要传入的参数组成的数组) 他可以在函数调用时修改, 在函数没有调用的时候, this的值是无法确定的.</p>
 <p>​        接下来具体看看函数的调用, 以及不同情况下this指向哪里, 我们会借助call()方法来帮助理解.</p>
 <h4 id="一-存粹的函数调用"><a href="#一-存粹的函数调用" class="headerlink" title="(一)存粹的函数调用"></a>(一)存粹的函数调用</h4><p>​        第一种方法最常见, 例子如下:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">true<span class="built_in">console</span>.log(name);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">test(<span class="string">"Jerry"</span>);</span><br></pre></td></tr></table></figure>
@@ -398,9 +398,9 @@
 <p>​        这种方法我们平常使用的最多,但是这种函数调用方法只是一种简写,它完整的写法是下面这样的:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">test.call(<span class="literal">undefined</span>, <span class="string">"Tom"</span>);</span><br></pre></td></tr></table></figure>
 
-<p>​        注意上面的<code>call</code>方法, <strong><code>call</code>方法接收的第一个参数就是this, 这里我们传了一个<code>undefined</code></strong>. 那么,依据定义,函数执行之后<code>console.log()</code>出来的会是<code>undefined</code>吗? 不是! (传入null或者undefined默认代表window对象)</p>
+<p>​        注意上面的<code>call</code>方法, <strong><code>call</code>方法接收的第一个参数就是this, 这里我们传了一个<code>undefined</code></strong>. 那么函数执行之后<code>console.log()</code>出来的会是<code>undefined</code>吗? 不是! (传入null或者undefined默认指window对象)</p>
 <p>​        所以在这里调用test函数的是window, <code>this</code>就是指向的window全局对象. 执行上下文也就是全局执行上下文了. </p>
-<h4 id="二-作为对象方法的调用"><a href="#二-作为对象方法的调用" class="headerlink" title="(二)作为对象方法的调用"></a>(二)作为对象方法的调用</h4><p>​        函数还可以作为某个对象的方法调用,这时候一般<code>this</code>就指这个上级对象. (用call()方法可以例外哦)</p>
+<h4 id="二-作为对象方法的调用"><a href="#二-作为对象方法的调用" class="headerlink" title="(二)作为对象方法的调用"></a>(二)作为对象方法的调用</h4><p>​        函数还可以作为某个对象的方法调用,这时候一般<code>this</code>就指这个对象. (用call()方法可以例外哦)</p>
 <p>例子:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">"Jerry"</span>,</span><br><span class="line">    greet: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">true&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.greet();	<span class="comment">// 第一种调用方式</span></span><br><span class="line">obj.greet.call(obj) 	<span class="comment">//第二种调用方式</span></span><br></pre></td></tr></table></figure>
 
@@ -408,7 +408,7 @@
 <p>手动指定<code>this</code>的例子:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">"Jerry"</span>,</span><br><span class="line">    greet: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">truetrue<span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.greet.call(&#123;<span class="attr">name</span>: <span class="string">"Trump"</span>&#125;); 	<span class="comment">// 打出来是 Trump</span></span><br></pre></td></tr></table></figure>
 
-<p>​        上面例子<code>call</code>方法调用函数时传入的是一个对象, 这个对象就是手动指定的<code>this</code>, 因此<code>greet()</code>行数中<code>console.log(this.name)</code>打印出来的就是Trump了. 这个例子也验证了文章第一段所说的:</p>
+<p>​        上面例子<code>call</code>方法调用函数时传入的是一个对象<code>{&quot;name&quot;: &quot;Trump&quot;}</code>, 这个对象就是手动指定的<code>this</code>, 因此<code>greet()</code>函数中<code>console.log(this.name)</code>打印出来的就是Trump了. 这个例子也验证了文章第一段所说的:</p>
 <blockquote>
 <p>我们只需要搞清楚函数是在什么时候什么地方如何被调用的即可, 并不需要关注函数在哪里定义或声明.</p>
 </blockquote>
@@ -435,7 +435,7 @@
 <h4 id="二-不能用call方法修改箭头函数的this"><a href="#二-不能用call方法修改箭头函数的this" class="headerlink" title="(二)不能用call方法修改箭头函数的this"></a>(二)不能用call方法修改箭头函数的this</h4><p>​        由于 箭头函数没有自己的this指针，通过 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="noopener"><code>call()</code></a> <em>或</em> <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" target="_blank" rel="noopener"><code>apply()</code></a> 方法调用一个函数时，只能传递参数（不能绑定this），他们的第一个参数会被忽略。（这种现象对于bind方法同样成立）</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> adder = &#123;</span><br><span class="line">  base : <span class="number">1</span>,</span><br><span class="line">  add : <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> f = <span class="function"><span class="params">v</span> =&gt;</span> v + <span class="keyword">this</span>.base;</span><br><span class="line">    <span class="keyword">return</span> f(a);</span><br><span class="line">  &#125;,</span><br><span class="line">  addThruCall: <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> f = <span class="function"><span class="params">v</span> =&gt;</span> v + <span class="keyword">this</span>.base;</span><br><span class="line">    <span class="keyword">var</span> b = &#123;</span><br><span class="line">      base : <span class="number">2</span></span><br><span class="line">    &#125;;        </span><br><span class="line">    <span class="keyword">return</span> f.call(b, a);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(adder.add(<span class="number">1</span>));         <span class="comment">// 输出 2</span></span><br><span class="line"><span class="built_in">console</span>.log(adder.addThruCall(<span class="number">1</span>)); <span class="comment">// 仍然输出 2（而不是3 ——译者注）</span></span><br></pre></td></tr></table></figure>
 
-<p>如上所示, 企图用call方法作用与箭头函数来手动指定this是行不通的.</p>
+<p>如上所示, 企图用call方法手动指定箭头函数的this是行不通的.</p>
 <hr>
 <p><strong>参考:</strong></p>
 <ol>
@@ -589,7 +589,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Xiwaa</p>
-              <p class="site-description motion-element" itemprop="description">Uber, North Pole & Sucide</p>
+              <p class="site-description motion-element" itemprop="description">大班学历盲流, 浅色床单哭泣.</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -599,7 +599,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -621,7 +621,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -697,7 +697,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -791,6 +791,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

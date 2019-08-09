@@ -80,7 +80,9 @@ console.log(chid_nodes.length);		//结果变成3了
 
 --------
 
-### **总结一下HTMLCollection和NodeList的主要区别就在于:**
+### **总结:**
+
+二者的主要区别:
 
 + `NodeList`中可包含所有12中节点类型, `HTMLCollection`中只能包含元素节点这一种.
 + `NodeList`是类数组对象, 拥有`forEach()`, `entries()`, `keys()`等方法而`HTMLCollection`没有.

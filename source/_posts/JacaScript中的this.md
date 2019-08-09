@@ -22,13 +22,13 @@ obj.foo() // 1
 foo() // 2
 ```
 
-​		对于``obj.foo()``来说, `foo`运行在`obj`环境, 调用者是`obj`, 所以this指向`obj`; 对于`foo()`来说, `foo`运行在全局环境,  调用者是window, 所以`this`指向全局环境. 不同环境不同作用域读取到的变量不同很正常, 所以两者的运行结果会不一样.
+​		对于``obj.foo()``来说, `foo`运行在`obj`环境, 调用者是`obj`, 所以this指向`obj`; 对于`foo()`来说, `foo`运行在全局环境,  调用者是window, 所以`this`指向代表全局环境的window. 不同环境不同作用域读取到的变量往往不同, 所以二者的运行结果不一样.
 
-​		这里我们要谈到一个叫执行上下文的玩意儿. JavaScript中执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。对于每个执行上下文，都有三个重要属性：变量对象(Variable object，VO), 作用域链(Scope chain)和this.
+​		这里我们要谈到一个叫执行上下文的东西. JavaScript中执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。对于每个执行上下文，都有三个重要属性：变量对象(Variable object，VO), 作用域链(Scope chain)和this.
 
-​		一个函数定义之后可以在很多不同的地方被调用,  函数内部的this就在函数运行时指明了执行上下文, 也就是说明了**是哪个家伙 在哪里 调戏(调用)了我**. 这时候函数内部就能知道作用域是什么,有哪些变量是自己可以读取到的. 简单地说,要知道`this`指向什么, 我们只**需要搞清楚函数是在什么时候什么地方被谁如何被调用的**即可, 并不需要关注函数在哪里定义或声明.
+​		一个函数定义之后可以在很多不同的地方被调用,  函数内部的this就在函数运行时指明了执行上下文, 也就是表明了**是哪个家伙 在哪里 调戏(调用)了我**. 这时候函数内部就能知道作用域是什么,有哪些变量是自己可以读取到的. 简单地说,要知道`this`指向什么, 我们只**需要搞清楚函数是在什么时候什么地方被谁如何被调用的**即可, 并不需要关注函数在哪里定义或声明.
 
-​		`this`是使用[`call()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call)方法调用函数时传递的第一个参数, 他可以在函数调用时修改, 在函数没有调用的时候, this的值是无法确定的.
+​		`this`是使用[`call()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call)方法调用函数时传递的第一个参数(call方法一共2个参数, 第一个由于绑定this, 第二个是要传入的参数组成的数组) 他可以在函数调用时修改, 在函数没有调用的时候, this的值是无法确定的.
 
 ​		接下来具体看看函数的调用, 以及不同情况下this指向哪里, 我们会借助call()方法来帮助理解.
 
@@ -54,13 +54,13 @@ function test(name) {
 test.call(undefined, "Tom");	
 ```
 
-​		注意上面的`call`方法, **`call`方法接收的第一个参数就是this, 这里我们传了一个`undefined`**. 那么,依据定义,函数执行之后`console.log()`出来的会是`undefined`吗? 不是! (传入null或者undefined默认代表window对象)
+​		注意上面的`call`方法, **`call`方法接收的第一个参数就是this, 这里我们传了一个`undefined`**. 那么函数执行之后`console.log()`出来的会是`undefined`吗? 不是! (传入null或者undefined默认指window对象)
 
 ​		所以在这里调用test函数的是window, `this`就是指向的window全局对象. 执行上下文也就是全局执行上下文了. 
 
 ####	 (二)作为对象方法的调用
 
-​		函数还可以作为某个对象的方法调用,这时候一般`this`就指这个上级对象. (用call()方法可以例外哦)
+​		函数还可以作为某个对象的方法调用,这时候一般`this`就指这个对象. (用call()方法可以例外哦)
 
 例子:
 
@@ -89,7 +89,7 @@ const obj = {
 obj.greet.call({name: "Trump"}); 	// 打出来是 Trump
 ```
 
-​		上面例子`call`方法调用函数时传入的是一个对象, 这个对象就是手动指定的`this`, 因此`greet()`行数中`console.log(this.name)`打印出来的就是Trump了. 这个例子也验证了文章第一段所说的:
+​		上面例子`call`方法调用函数时传入的是一个对象`{"name": "Trump"}`, 这个对象就是手动指定的`this`, 因此`greet()`函数中`console.log(this.name)`打印出来的就是Trump了. 这个例子也验证了文章第一段所说的:
 
 > 我们只需要搞清楚函数是在什么时候什么地方如何被调用的即可, 并不需要关注函数在哪里定义或声明.
 
@@ -187,7 +187,7 @@ console.log(adder.add(1));         // 输出 2
 console.log(adder.addThruCall(1)); // 仍然输出 2（而不是3 ——译者注）
 ```
 
-如上所示, 企图用call方法作用与箭头函数来手动指定this是行不通的.
+如上所示, 企图用call方法手动指定箭头函数的this是行不通的.
 
 ----
 
