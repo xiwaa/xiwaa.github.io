@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[window.getComputedStyle(可获取伪类元素样式)]]></title>
+    <url>%2F2019%2F08%2F09%2F%E5%85%B3%E4%BA%8EgetComputedStyle%2F</url>
+    <content type="text"><![CDATA[一、window.getComputedStyle 定义语法: window.getComputedStyle(element[, pseudoElt]); Parameter Description element Required. The element to get the computed style for pseudoElement Optional. A pseudo-element to get 12345let elem1 = document.getElementById("elemId");let style = window.getComputedStyle(elem1, null);// 它等价于// let style = document.defaultView.getComputedStyle(elem1, null); 一般来说直接window.getComputedStyle就可以了, 使用document.defaultView.getComputedStyle是为firefox3.6上访问子框架时做兼容, 保险起见用第二种吧. getComputedStyle获取特定元素最终应用了经过计算(computed)的所有的CSS属性和属性的值, 它返回的是一个CSS样式申明对象 object CSSStyleDeclaration . 这个对象是只读的 . 经过计算的样式(computed style) 是应用了来自不同来源的样式之后(来源包括内联样式、内部样式、外部样式表、继承的样式、浏览器赋予的默认样式)最终呈现时那个值. 好像有点绕, 举个栗子: 一个p标签浏览器默认会给它一些样式, 例如padding、width、height之类, 我们可能用了内部样式表将它的height重新定义了, 然后我们可能又在外部样式表或者通过JavaScript把它的height给改了, 那么经过计算的 height就是最终呈现出来的时候的那个值咯 . 前面那一通对height的操作就是计算咯. 二、getComputedStyle VS element.style element.style只能获取到在element元素中style属性里的样式(内联样式), 对于继承的或者浏览器默认赋予的样式这些是没有办法获取的, 而getComputedStyle就是全能型选手了, 从上面的语法部分也看到了, 它支持两个参数, 第一个很明显是要获取样式的元素, 第二个就厉害了可以获取伪类的样式. –Wanna see my cow pussy(看我牛逼不)? 获取伪类元素的样式: 1234567891011121314&lt;style&gt; h3::after &#123; content: "rocks!"; &#125;&lt;/style&gt;&lt;h3&gt;generated content&lt;/h3&gt; &lt;script&gt; let h3 = document.querySelector('h3'), result = document.defaultView.getComputedStyle(h3, '::after').getProperty("content"); console.log(`the generated content is: $&#123;result&#125;`); // the generated content is: "rocks!"&lt;/script&gt; getComputedStyle.getProperty()方法用于获取特定属性的值, 参见上面第11行. getComputedStyle 是只读的, 只能获取样式, 不能设置. style即可读也可写, 可攻可受、可进可退, 简直欢喜无量, 不可言说. 123let elem = document.getElementById("elem");let elemHeight = elem.style("height"); // 获取样式elem.style("height", "20px"); // 设置样式 三、getComputedStyle VS currentStyleIE6-8不支持 getComputedStyle, 它们有个 currentStyle 属性, element.currentStyle返回元素当前应用的最终CSS属性值, 包含页面内部的style属性和外部引用的CSS文件. 除了不能获取伪类元素的样式, 其他跟getComputedStyle差不多. 为了兼容如下操作(以获取height为例): 1element.currentStyle? element.currentSyle["height"]: document.defaultView.getComputedStyle(element, null).getProperty("height");]]></content>
+      <categories>
+        <category>Programming</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[window.onload和$(document).ready]]></title>
     <url>%2F2019%2F08%2F08%2Fwindow.onload()%E5%92%8Cdocument.ready()%2F</url>
     <content type="text"><![CDATA[二者的区别首先需要明确window.onload属性是原生js的, 而$(document).ready是属于jQuery的, 要用后者需要先引入jQuery. 二者的区别在于$(document).ready事件发生在DOM已经完全加载(也就是DOM tree已经构建好), 做好了给JacaScript操作它们的准备了之后, 而window.onload事件发生在整个窗口页面和资源完全加载之后, 它不仅仅需要DOM加载完成, 还需要图片、iframe、CSS文件、JS等这些内容都加载好. 所以window.onload()事件发生的更晚是显而易见的. 来瞄一眼jQuery的文档是如何描述的: In most cases, the script can be run as soon as the DOM hierarchy has been fully constructed. A page can’t be manipulated safely until the document is “ready.” jQuery detects this state of readiness for you. Code included inside $( document ).ready() will only run once the page Document Object Model (DOM) is ready for JavaScript code to execute. Code included inside $( window ).on( &quot;load&quot;, function() { ... }) will run once the entire page (images or iframes), not just the DOM, is ready. 二者还有个 区别是window.onload只能用一次而$(document).ready可以多次使用(例如有多个js库时可能需要多次用从而做各自特定需要的操作). window.onload这种页面加载事件, 一个页面就能用一次, 很容易理解嘛, 如果硬要多次使用的话那就会造成后面的覆盖掉前面的, 就跟变量重新赋值似的. 12345678window.onload = function() &#123; console.log("1");&#125;window.onload = function() &#123;trueconsole.log("2");&#125;// 最终的结果就是后一个覆盖掉前一个, 打印出2. 正常的做法是把函数加到一个window.onload里面: 12345window.onload = function() &#123; func1(); func2(); func3();&#125; 上面这样挺好了, 可是如果函数太多的话也挺难看的, 也不够灵活. 所以可以如下定义一个addLoadEvent函数: 1234567891011function addLoadEvent(func) &#123; const oldOnload = window.onload; if (typeof window.onload != "function") &#123; window.onload = func; &#125; else &#123; window.onload = function() &#123;truetruetruelodOnload(); func(); &#125; &#125;&#125; 以上代码做了如下事情: 把现有的window.onload事件处理函数的值存入变量oldonload。 如果在这个处理函数上还没有绑定的任何函数，则使用window.οnlοad=func直接调用，不需要加括号 如果在这个处理函数上已经绑定了一些函数，就把新的函数追加到现在指令的末尾。 现在, 如果某个函数需要在window.onload事件触发的时候立即执行的话, 我们只需要像下面这样: addLoadEvent(func1); addLoadEvent(func2); 你爱加多少加多少, 爱在哪儿加在哪儿加, 也很清晰明白. DOMContentLoaded事件当初始的 HTML 文档被完全加载和解析完成之后，DOMContentLoaded 事件被触发，而无需等待样式表、图像和子框架的完成加载。另一个不同的事件 load应该仅用于检测一个完全加载的页面。 在使用 DOMContentLoaded 更加合适的情况下使用 load 是一个令人难以置信的流行的错误，所以要谨慎。注意：DOMContentLoaded 事件必须等待其所属script之前的样式表加载解析完成才会触发。 123document.addEventListener('DOMContentLoaded',function()&#123; //需要执行的代码；&#125;,false) DOMContentLonded效果跟$(document).ready相似, 但是不同浏览器有兼容问题. 例如IE低版本浏览器就没有这个事件，而所有浏览器均支持的onreadystatechange 事件能辨识readyState 属性的改变，在readyState 属性为complete时，DOM树构建完毕，这样就可以封装一个兼容低版本的函数. 12345678910111213function DOMReady(func)&#123; if(document.addEventListener)&#123; //高级浏览器支持 document.addEventListener('DOMContentLoaded',function()&#123; func &amp;&amp; func(); &#125;,false) &#125;else&#123; //低版本浏览器使用 document.onreadystatechange = function()&#123; if(document.readyState == 'complete')&#123; func &amp;&amp; func(); &#125; &#125;; &#125;&#125; 参考: $(document).ready() vs window.onload() vs $(window).load() stackoverflow - Is $(document).ready() also CSS ready? MDN - DOMContentLoaded 简书 - DOMContentLoaded 关于JS的window.onload()方法 What, exactly, is the DOM?]]></content>
@@ -20,8 +32,8 @@
         <category>Programming</category>
       </categories>
       <tags>
-        <tag>html</tag>
         <tag>js</tag>
+        <tag>html</tag>
       </tags>
   </entry>
   <entry>
@@ -32,8 +44,8 @@
         <category>Programming</category>
       </categories>
       <tags>
-        <tag>html</tag>
         <tag>js</tag>
+        <tag>html</tag>
       </tags>
   </entry>
   <entry>
@@ -48,13 +60,13 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
+    <title><![CDATA[Programming]]></title>
+    <url>%2FProgramming%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[Programming]]></title>
-    <url>%2FProgramming%2Findex.html</url>
+    <title><![CDATA[tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
