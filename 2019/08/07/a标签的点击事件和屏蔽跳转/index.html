@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="js,html,">
+  <meta name="keywords" content="html,js,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="常用的屏蔽href跳转的方法不让跳, 一般有两个思路:  第一个思路就是把href干掉, 没有有效地址看你还往哪跳;  第二个思路就是即使href地址是有效的我也无所谓, 直接把你默认跳转这个行为艺术给禁咯.  个人认为第一种思路是简单粗暴的, 是不可取的, 第二种才是正确的途径. 我们应当保证HTML的语义化和可访问性, a标签就是链接嘛, 哪有链接没有有效地址的道理.(有时候有的人的存在把a当">
-<meta name="keywords" content="js,html">
+<meta name="description" content="常用的屏蔽href跳转的方法不让跳, 一般有两个思路:  第一个思路就是把href干掉, 没有有效地址看你还往哪跳;  第二个思路就是即使href地址是有效的我也无所谓, 直接把默认跳转这个行为艺术给禁咯.  个人认为第一种思路是简单粗暴的, 是不可取的, 第二种才是正确的途径. 我们应当保证HTML的语义化和可访问性, a标签就是链接嘛, 哪有链接没有有效地址的道理.(有时候有的人的存在把a当按">
+<meta name="keywords" content="html,js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="a标签的点击事件和屏蔽跳转">
 <meta property="og:url" content="http://www.xiwaa.me/2019/08/07/a标签的点击事件和屏蔽跳转/index.html">
 <meta property="og:site_name" content="Xiwaaの扣扣空间">
-<meta property="og:description" content="常用的屏蔽href跳转的方法不让跳, 一般有两个思路:  第一个思路就是把href干掉, 没有有效地址看你还往哪跳;  第二个思路就是即使href地址是有效的我也无所谓, 直接把你默认跳转这个行为艺术给禁咯.  个人认为第一种思路是简单粗暴的, 是不可取的, 第二种才是正确的途径. 我们应当保证HTML的语义化和可访问性, a标签就是链接嘛, 哪有链接没有有效地址的道理.(有时候有的人的存在把a当">
+<meta property="og:description" content="常用的屏蔽href跳转的方法不让跳, 一般有两个思路:  第一个思路就是把href干掉, 没有有效地址看你还往哪跳;  第二个思路就是即使href地址是有效的我也无所谓, 直接把默认跳转这个行为艺术给禁咯.  个人认为第一种思路是简单粗暴的, 是不可取的, 第二种才是正确的途径. 我们应当保证HTML的语义化和可访问性, a标签就是链接嘛, 哪有链接没有有效地址的道理.(有时候有的人的存在把a当按">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-08T04:37:44.293Z">
+<meta property="og:updated_time" content="2019-08-09T13:11:57.046Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="a标签的点击事件和屏蔽跳转">
-<meta name="twitter:description" content="常用的屏蔽href跳转的方法不让跳, 一般有两个思路:  第一个思路就是把href干掉, 没有有效地址看你还往哪跳;  第二个思路就是即使href地址是有效的我也无所谓, 直接把你默认跳转这个行为艺术给禁咯.  个人认为第一种思路是简单粗暴的, 是不可取的, 第二种才是正确的途径. 我们应当保证HTML的语义化和可访问性, a标签就是链接嘛, 哪有链接没有有效地址的道理.(有时候有的人的存在把a当">
+<meta name="twitter:description" content="常用的屏蔽href跳转的方法不让跳, 一般有两个思路:  第一个思路就是把href干掉, 没有有效地址看你还往哪跳;  第二个思路就是即使href地址是有效的我也无所谓, 直接把默认跳转这个行为艺术给禁咯.  个人认为第一种思路是简单粗暴的, 是不可取的, 第二种才是正确的途径. 我们应当保证HTML的语义化和可访问性, a标签就是链接嘛, 哪有链接没有有效地址的道理.(有时候有的人的存在把a当按">
 
 
 
@@ -387,7 +387,7 @@
         <h3 id="常用的屏蔽href跳转的方法"><a href="#常用的屏蔽href跳转的方法" class="headerlink" title="常用的屏蔽href跳转的方法"></a><strong>常用的屏蔽href跳转的方法</strong></h3><p>不让跳, 一般有两个思路:</p>
 <ol>
 <li>第一个思路就是把href干掉, 没有有效地址看你还往哪跳; </li>
-<li>第二个思路就是即使href地址是有效的我也无所谓, 直接把你默认跳转这个行为艺术给禁咯.</li>
+<li>第二个思路就是即使href地址是有效的我也无所谓, 直接把默认跳转这个行为艺术给禁咯.</li>
 </ol>
 <p>个人认为第一种思路是简单粗暴的, 是不可取的, 第二种才是正确的途径. 我们应当保证HTML的<strong>语义化</strong>和<strong>可访问性</strong>, a标签就是链接嘛, 哪有链接没有有效地址的道理.(有时候有的人的存在把a当按钮用的情况, 是错误滴),  既然没地址那就说明不该用这个标签. 如果用户禁止了浏览器的JavaScript怎么办?  那就啥也看不见了?  所以第二种思路从事正确的, 即使JavaScript不起作用了, 效果差点,  至少能知道是个啥东西嘛.</p>
 <h4 id="方法一-思路1"><a href="#方法一-思路1" class="headerlink" title="方法一(思路1)"></a><strong>方法一(思路1)</strong></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0)"</span> <span class="attr">onclick</span>=<span class="string">"someFunction()"</span>&gt;</span>foo<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -401,13 +401,13 @@
 <p>我们需要对事件处理函数的工作机制有一定的了解: 在给某一个元素添加事件处理函数后, 一旦发生预定事件, 相应的 <code>JavaScript</code> 代码就会得到执行. 那些 <code>JavaScript</code> 代码可以返回一个结果, 而这个结果将被传递给那个事件处理函数. 例如, 我们可以给某个链接添加一个 <code>onclick</code> 事件处理函数, 并让这个处理函数触发的代码返回布尔值 <code>true</code> 或 <code>false</code>. 这样一来, 当这个链接被点击时, 如果那段 <code>JavaScript</code> 代码返回给 <code>onclick</code> 事件处理函数的值是 <code>true</code>, <code>onclick</code> 事件处理函数将认为”这个链接被点击了” 然后默认跳转; 反之, 如果那段 <code>JavaScript</code> 代码返回给 <code>onclick</code> 事件处理函数的值是 <code>false</code>, <code>onclick</code>事件处理函数将认为”这个链接没有被点击” 也就不会跳转咯.</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://www.baidu.com"</span> <span class="attr">onclick</span>=<span class="string">"someFunction;return false;"</span>&gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>以上例子, 达到了a标签在包含有意义的href地址的情况下被点击之后执行相应函数却不跳转. 因为通过return false让它觉得自己没被点, 实际上早他妈点过了, 哈哈哈.</p>
+<p>以上例子, 达到了a标签在包含有意义的href地址的情况下被点击之后执行相应函数却不跳转. 因为通过return false让它得到的反馈是自己没被点, 实际上点过了. 大傻X, 被骗了吧, 哈哈哈.</p>
 <hr>
 <h4 id="方法四-思路2"><a href="#方法四-思路2" class="headerlink" title="方法四(思路2)"></a><strong>方法四(思路2)</strong></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"test"</span> <span class="attr">href</span>=<span class="string">"https://www.baidu.com"</span>&gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> test = <span class="built_in">document</span>.querySelector(<span class="string">"#test"</span>);</span><br><span class="line">test.onclick(<span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    event.preventDefault();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p>以上例子通过取消点击事件的默认行为来禁止跳转. (行为艺术很牛逼么? 说禁你就禁你, 怕不怕?)</p>
+<p>以上例子通过取消点击事件的默认行为来禁止跳转. </p>
 <hr>
 <p><strong>参考:</strong></p>
 <ul>
@@ -433,9 +433,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/js/" rel="tag"># js</a>
-          
             <a href="/tags/html/" rel="tag"># html</a>
+          
+            <a href="/tags/js/" rel="tag"># js</a>
           
         </div>
       
