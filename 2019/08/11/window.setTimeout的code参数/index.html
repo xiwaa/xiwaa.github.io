@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Xiwaaの扣扣空间">
 <meta property="og:description" content="setTimeout()的定义(“废话”)window.setTimeout()方法设置一个定时器, 该定时器在定时器到期后执行指定的一段代码. 语法  let timeoutID = scope.setTimeout(function, [, delay, param1, param2, …]); let  timeoutID = scope.setTimeout(function, [, de">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-11T09:53:31.648Z">
+<meta property="og:updated_time" content="2019-08-11T10:00:35.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于setTimeout中code参数、附加参数和匿名函数的使用">
 <meta name="twitter:description" content="setTimeout()的定义(“废话”)window.setTimeout()方法设置一个定时器, 该定时器在定时器到期后执行指定的一段代码. 语法  let timeoutID = scope.setTimeout(function, [, delay, param1, param2, …]); let  timeoutID = scope.setTimeout(function, [, de">
@@ -409,7 +409,7 @@
 <p>需要注意的是<code>setTimeout()</code>和<code>setInterval()</code>共有一个编号池, 技术上讲, <code>clearTimeout()</code>和<code>clearInterval()</code>可以互换. 但是, 为了避免混淆, 不要混用取消定时函数.</p>
 <p>在同一个对象上(一个window或worker), <code>setTimetout()</code>或者<code>setInterval()</code>在后续的调用不会重用同一个定时器编号. 但是不同的对象使用独立的编号池.</p>
 <hr>
-<h3 id="code参数、附加参数和匿名函数"><a href="#code参数、附加参数和匿名函数" class="headerlink" title="code参数、附加参数和匿名函数"></a><code>code</code>参数、附加参数和匿名函数</h3><p>为什么要写这篇幼儿园作文呢? 因为看书的时候发现一个以前不知道的地方–<code>setTimeout()</code>可以接受一个<code>code</code>参数, 也就是一个字符串. 当计时器到期后解析执行这个字符串里面的内容. 我以前一直以为只能传函数, 唉, 看文档不认真,  我失败了, 我是傻X, 我要坐Uber去北极自杀… 下面放在书上看到的代码:</p>
+<h3 id="code参数、附加参数和匿名函数"><a href="#code参数、附加参数和匿名函数" class="headerlink" title="code参数、附加参数和匿名函数"></a><code>code</code>参数、附加参数和匿名函数</h3><p>为什么要写这篇幼儿园作文呢? 因为看书的时候发现一个以前不知道的地方–<code>setTimeout()</code>可以接受一个<code>code</code>参数, 也就是一个字符串. 当计时器到期后解析执行这个字符串里面的内容. 我竟然以为只能传函数呢. 啊, 我湿了, 流下失败的泪水, 我是傻X, 我在浅色床单哭泣, 可恶, 坐Uber, 去北极, 自杀吧… 下面放在书上看到的代码:</p>
 
       
     </div>
