@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="js,DOM,">
+  <meta name="keywords" content="Google Drive,">
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="二者的区别首先需要明确window.onload属性是原生js的, 而$(document).ready是属于jQuery的, 要用后者需要先引入jQuery. 二者的区别在于$(document).ready事件发生在DOM已经完全加载(也就是DOM tree已经构建好), 做好了给JacaScript操作它们的准备了之后, 而window.onload事件发生在整个窗口页面和资源完全加载之后,">
-<meta name="keywords" content="js,DOM">
+<meta name="description" content="转载文章：ShareList（原 GDLIST） - 支持 Google Drive/OneDrive 多网盘同时挂载 ShareList 原名 GDlist是一个易用的网盘工具，支持快速挂载 Google Drive、OneDrive ，可通过插件扩展功能。不占服务器空间；可多个 Google Drive 和 OneDrive 同时挂载到网盘；支持直链下载；在线预览（图片、视频、音频）。 Git">
+<meta name="keywords" content="Google Drive">
 <meta property="og:type" content="article">
-<meta property="og:title" content="window.onload和$(document).ready">
-<meta property="og:url" content="http://www.xiwaa.me/2019/08/08/window.onload()和document.ready()/index.html">
+<meta property="og:title" content="Sharelist挂载GoogleDrive">
+<meta property="og:url" content="http://www.xiwaa.me/2019/09/09/Sharelist挂载GoogleDrive/index.html">
 <meta property="og:site_name" content="Xiwaaの扣扣空间">
-<meta property="og:description" content="二者的区别首先需要明确window.onload属性是原生js的, 而$(document).ready是属于jQuery的, 要用后者需要先引入jQuery. 二者的区别在于$(document).ready事件发生在DOM已经完全加载(也就是DOM tree已经构建好), 做好了给JacaScript操作它们的准备了之后, 而window.onload事件发生在整个窗口页面和资源完全加载之后,">
+<meta property="og:description" content="转载文章：ShareList（原 GDLIST） - 支持 Google Drive/OneDrive 多网盘同时挂载 ShareList 原名 GDlist是一个易用的网盘工具，支持快速挂载 Google Drive、OneDrive ，可通过插件扩展功能。不占服务器空间；可多个 Google Drive 和 OneDrive 同时挂载到网盘；支持直链下载；在线预览（图片、视频、音频）。 Git">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-10T11:40:05.719Z">
+<meta property="og:image" content="http://www.xiwaa.me/2019/09/09/Sharelist挂载GoogleDrive/sharelist1.png">
+<meta property="og:updated_time" content="2019-09-09T08:15:12.446Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="window.onload和$(document).ready">
-<meta name="twitter:description" content="二者的区别首先需要明确window.onload属性是原生js的, 而$(document).ready是属于jQuery的, 要用后者需要先引入jQuery. 二者的区别在于$(document).ready事件发生在DOM已经完全加载(也就是DOM tree已经构建好), 做好了给JacaScript操作它们的准备了之后, 而window.onload事件发生在整个窗口页面和资源完全加载之后,">
+<meta name="twitter:title" content="Sharelist挂载GoogleDrive">
+<meta name="twitter:description" content="转载文章：ShareList（原 GDLIST） - 支持 Google Drive/OneDrive 多网盘同时挂载 ShareList 原名 GDlist是一个易用的网盘工具，支持快速挂载 Google Drive、OneDrive ，可通过插件扩展功能。不占服务器空间；可多个 Google Drive 和 OneDrive 同时挂载到网盘；支持直链下载；在线预览（图片、视频、音频）。 Git">
+<meta name="twitter:image" content="http://www.xiwaa.me/2019/09/09/Sharelist挂载GoogleDrive/sharelist1.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://www.xiwaa.me/2019/08/08/window.onload()和document.ready()/">
+  <link rel="canonical" href="http://www.xiwaa.me/2019/09/09/Sharelist挂载GoogleDrive/">
 
 
 
 
 
-  <title>window.onload和$(document).ready | Xiwaaの扣扣空间</title>
+  <title>Sharelist挂载GoogleDrive | Xiwaaの扣扣空间</title>
   
 
 
@@ -295,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.xiwaa.me/2019/08/08/window.onload()和document.ready()/">
+    <link itemprop="mainEntityOfPage" href="http://www.xiwaa.me/2019/09/09/Sharelist挂载GoogleDrive/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xiwaa">
@@ -312,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">window.onload和$(document).ready</h1>
+          <h1 class="post-title" itemprop="name headline">Sharelist挂载GoogleDrive</h1>
         
 
         <div class="post-meta">
@@ -324,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T09:19:14+08:00">
-                2019-08-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-09T16:14:35+08:00">
+                2019-09-09
               </time>
             
 
@@ -347,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index">
-                    <span itemprop="name">Programming</span>
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
                   </a>
                 </span>
 
@@ -384,54 +386,57 @@
       
 
       
-        <h3 id="二者的区别"><a href="#二者的区别" class="headerlink" title="二者的区别"></a>二者的区别</h3><p>首先需要明确window.onload属性是原生js的, 而$(document).ready是属于jQuery的, 要用后者需要先引入jQuery.</p>
-<p>二者的区别在于$(document).ready事件发生在<strong>DOM已经完全加载(也就是DOM tree已经构建好), 做好了给JacaScript操作它们的准备了</strong>之后, 而window.onload事件发生在整个窗口页面和资源完全加载之后, 它不仅仅需要DOM加载完成, 还需要图片、iframe、CSS文件、JS等这些内容都加载好.  所以window.onload()事件发生的更晚是显而易见的.</p>
-<p>来瞄一眼jQuery的文档是如何描述的:</p>
-<blockquote>
-<p>In most cases, the script can be run as soon as the DOM hierarchy has been fully constructed.</p>
-<p>A page can’t be manipulated safely until the document is “ready.” jQuery detects this state of readiness for you. Code included inside <code>$( document ).ready()</code> will only run once the page Document Object Model (DOM) is ready for JavaScript code to execute. Code included inside <code>$( window ).on( &quot;load&quot;, function() { ... })</code> will run once the entire page (images or iframes), not just the DOM, is ready.</p>
-</blockquote>
-<p>二者还有个 区别是window.onload只能用一次而$(document).ready可以多次使用(例如有多个js库时可能需要多次用<code>ready</code>从而做各自特定需要的操作). window.onload这种页面加载事件, 一个页面就能用一次, 很容易理解嘛, 如果硬要多次使用的话那就会造成后面的覆盖掉前面的, 就跟变量重新赋值似的.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"1"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">true<span class="built_in">console</span>.log(<span class="string">"2"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 最终的结果就是后一个覆盖掉前一个, 打印出2.</span></span><br></pre></td></tr></table></figure>
-
-<p>正常的做法是把函数加到一个window.onload里面:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    func1();</span><br><span class="line">    func2();</span><br><span class="line">    func3();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面这样挺好了, 可是如果函数太多的话也挺难看的, 也不够灵活. 所以可以如下定义一个addLoadEvent函数:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addLoadEvent</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> oldOnload = <span class="built_in">window</span>.onload;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span>	<span class="built_in">window</span>.onload !== <span class="string">"function"</span>) &#123;</span><br><span class="line">        <span class="built_in">window</span>.onload = func;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        </span><br><span class="line">            oldOnload();</span><br><span class="line">            func();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>以上代码做了如下事情:</p>
-<ol>
-<li><p>把现有的window.onload事件处理函数的值存入变量oldOnload。</p>
-</li>
-<li><p>如果在这个处理函数上还没有绑定的任何函数，则使用window.οnlοad=func直接调用，不需要加括号</p>
-</li>
-<li><p>如果在这个处理函数上已经绑定了一些函数，就把新的函数追加到现在指令的末尾。</p>
-</li>
-</ol>
-<p>现在, 如果某个函数需要在window.onload事件触发的时候立即执行的话, 我们只需要像下面这样:</p>
-<p>addLoadEvent(func1);</p>
-<p>addLoadEvent(func2);</p>
-<p>你爱加多少加多少, 爱在哪儿加在哪儿加, 也很清晰明白.</p>
-<hr>
-<h3 id="DOMContentLoaded事件"><a href="#DOMContentLoaded事件" class="headerlink" title="DOMContentLoaded事件"></a>DOMContentLoaded事件</h3><p>当初始的 <strong>HTML</strong> 文档被完全加载和解析完成之后，<strong>DOMContentLoaded</strong> 事件被触发，而无需等待样式表、图像和子框架的完成加载。另一个不同的事件 <code>load</code>应该仅用于检测一个完全加载的页面。 在使用 <code>DOMContentLoaded</code> 更加合适的情况下使用 <a href="https://developer.mozilla.org/en-US/docs/Mozilla_event_reference/load" target="_blank" rel="noopener"><code>load</code></a> 是一个令人难以置信的流行的错误, 这种错误很明显会使运行速度变慢, 所以要谨慎。</p>
-<p>注意：<strong>DOMContentLoaded</strong> 事件必须等待其所属script之前的样式表加载解析完成才会触发。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//需要执行的代码；</span></span><br><span class="line">&#125;,<span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
-
-<p>DOMContentLonded效果跟$(document).ready相似, 但是不同浏览器有兼容问题. 例如IE低版本浏览器就没有这个事件，而所有浏览器均支持的onreadystatechange 事件能辨识readyState 属性的改变，在readyState 属性为complete时，DOM树构建完毕，这样就可以封装一个兼容低版本的函数.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">DOMReady</span>(<span class="params">func</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">document</span>.addEventListener)&#123;   <span class="comment">//高级浏览器支持      		  </span></span><br><span class="line">        <span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            func &amp;&amp; func();</span><br><span class="line">        &#125;,<span class="literal">false</span>)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;                    <span class="comment">//低版本浏览器使用(IE)</span></span><br><span class="line">        <span class="built_in">document</span>.attachEvent(<span class="string">"onreadychange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">document</span>.readyState == <span class="string">'complete'</span>)&#123;</span><br><span class="line">                func &amp;&amp; func();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>说明: IE 没有document.addEventListener()方法, 所以第一个if排除IE了;  else这里就是针对IE了, 由于IE没有addEventListener所以用的attachEvent绑定事件., 真他喵蛋疼.</p>
-<hr>
-<p><strong>参考:</strong></p>
-<ul>
-<li><a href="https://www.techiediaries.com/javascript/document-ready-vs-window-onload-vs-window-load/" target="_blank" rel="noopener"> $(document).ready() vs window.onload() vs $(window).load()</a></li>
-<li><a href="https://stackoverflow.com/questions/1324568/is-document-ready-also-css-ready" target="_blank" rel="noopener">stackoverflow - Is $(document).ready() also CSS ready?</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded" target="_blank" rel="noopener">MDN - DOMContentLoaded</a></li>
-<li><a href="https://www.jianshu.com/p/9997836f2351" target="_blank" rel="noopener">简书 - DOMContentLoaded</a></li>
-<li><a href="https://blog.csdn.net/baidu_25343343/article/details/72639093" target="_blank" rel="noopener">关于JS的window.onload()方法</a></li>
-<li><a href="https://bitsofco.de/what-exactly-is-the-dom/" target="_blank" rel="noopener">What, exactly, is the DOM?</a></li>
+        <p><strong>转载文章</strong>：<a href="https://www.moewah.com/archives/1462.html" target="_blank" rel="noopener">ShareList（原 GDLIST） - 支持 Google Drive/OneDrive 多网盘同时挂载</a></p>
+<p><code>ShareList</code> 原名 <code>GDlist</code>是一个易用的网盘工具，支持快速挂载 Google Drive、OneDrive ，可通过插件扩展功能。不占服务器空间；可多个 <code>Google Drive</code> 和 <code>OneDrive</code> 同时挂载到网盘；支持直链下载；在线预览（图片、视频、音频）。</p>
+<p>Github 开源地址：<a href="https://www.moewah.com/go/aHR0cHM6Ly9naXRodWIuY29tL3JlcnVpbi9zaGFyZWxpc3Q=" target="_blank" rel="noopener">https://github.com/reruin/sharelist</a></p>
+<h2 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h2><p><img src="sharelist1.png" alt="sharelist演示"></p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>多种<strong>网盘系统</strong>快速挂载。</li>
+<li>支持虚拟目录和虚拟文件。</li>
+<li>支持目录加密。</li>
+<li>插件机制。</li>
+<li>国际化支持。</li>
+<li>WebDAV 导出。</li>
 </ul>
+<h2 id="脚本安装"><a href="#脚本安装" class="headerlink" title="脚本安装"></a>脚本安装</h2><p><strong>系统要求：</strong><code>CentOS</code>、<code>Debian</code>、<code>Ubuntu</code></p>
+<p>运行命令：</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#Debian/Ubuntu系统</span></span><br><span class="line">apt-<span class="keyword">get</span> -y install git</span><br><span class="line"></span><br><span class="line"><span class="meta">#CentOS/RHEL系统</span></span><br><span class="line">yum -y install git</span><br><span class="line"></span><br><span class="line"><span class="meta">#下载源码安装</span></span><br><span class="line">git clone https:<span class="comment">//github.com/reruin/sharelist.git</span></span><br><span class="line">cd sharelist &amp;&amp; bash install.sh</span><br></pre></td></tr></table></figure>
+
+<p>完成后，访问 <code>http://ip:33001</code>，进入界面开始设置，记住网盘文件夹要共享一下，不然会出现 <code>500</code> 错误。WebDAV 目录则为 <code>http://localhost:33001/webdav</code></p>
+<h2 id="Docker-安装"><a href="#Docker-安装" class="headerlink" title="Docker 安装"></a>Docker 安装</h2><p><strong>1、安装 Docker 和 Docker Compose</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装Docker</span></span><br><span class="line">curl -sSL https://get.docker.com/ | sh</span><br><span class="line">service docker <span class="keyword">start</span></span><br><span class="line"><span class="comment">#安装Docker Compose</span></span><br><span class="line">curl -L https://github.com/docker/compose/releases/download/<span class="number">1.17</span><span class="number">.0</span>/docker-compose-<span class="string">`uname -s`</span>-<span class="string">`uname -m`</span> -o /usr/<span class="keyword">local</span>/<span class="keyword">bin</span>/docker-compose</span><br><span class="line">chmod +x /usr/<span class="keyword">local</span>/<span class="keyword">bin</span>/docker-compose</span><br></pre></td></tr></table></figure>
+
+<p><strong>2、安装 ShareList</strong></p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#Debian/Ubuntu系统</span></span><br><span class="line">apt-<span class="keyword">get</span> -y install git</span><br><span class="line"></span><br><span class="line"><span class="meta">#CentOS/RHEL系统</span></span><br><span class="line">yum -y install git</span><br><span class="line"></span><br><span class="line"><span class="meta">#安装GDLIST</span></span><br><span class="line">git clone https:<span class="comment">//github.com/reruin/sharelist.git</span></span><br><span class="line">cd sharelist</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+<p>最后访问 <code>http://IP:33001</code> 即可。</p>
+<h2 id="添加域名-SSL"><a href="#添加域名-SSL" class="headerlink" title="添加域名 SSL"></a>添加域名 SSL</h2><p>如果想用域名查看的，可以用 <code>Caddy</code> 反代，并自动添加 <code>SSL</code> 证书。首先需要解析一个域名到服务器上。</p>
+<p>安装 <code>Caddy</code></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -<span class="keyword">N</span> --<span class="keyword">no</span>-check-certificate http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/ToyoDAdoubiBackup/doubi/master/caddy_install.<span class="keyword">sh</span> &amp;&amp; chmod +<span class="keyword">x</span> caddy_install.<span class="keyword">sh</span> &amp;&amp; bash caddy_install.<span class="keyword">sh</span></span><br><span class="line">#备用地址</span><br><span class="line">wget -<span class="keyword">N</span> --<span class="keyword">no</span>-check-certificate http<span class="variable">s:</span>//www.moewah.<span class="keyword">com</span>/<span class="keyword">source</span>/caddy_install.<span class="keyword">sh</span> &amp;&amp; chmod +<span class="keyword">x</span> caddy_install.<span class="keyword">sh</span> &amp;&amp; bash caddy_install.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑配置文件</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#以下全部内容是一个整体，修改域名、IP、邮箱后一起复制到SSH运行！</span><br><span class="line">echo "https:<span class="comment">//xx.com &#123;</span></span><br><span class="line"> tls admin@moewah.com</span><br><span class="line"> proxy / 111.111.111.111:33001 &#123;</span><br><span class="line">    header_upstream Host &#123;host&#125;</span><br><span class="line">    header_upstream X-Real-IP &#123;remote&#125;</span><br><span class="line">    header_upstream X-Forwarded-<span class="keyword">For</span> &#123;remote&#125;</span><br><span class="line">    header_upstream X-Forwarded-Proto &#123;scheme&#125;</span><br><span class="line">  &#125;</span><br><span class="line"> <span class="keyword">log</span> /<span class="keyword">var</span>/<span class="keyword">log</span>/caddy.<span class="built_in">log</span></span><br><span class="line"> gzip</span><br><span class="line">&#125;" &gt; /usr/<span class="keyword">local</span>/caddy/Caddyfile</span><br></pre></td></tr></table></figure>
+
+<p>启动 <code>Caddy</code></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/etc/i</span>nit.d<span class="regexp">/caddy restart</span></span><br></pre></td></tr></table></figure>
+
+<p>最后就可以通过域名 <code>https</code> 访问了。</p>
+<h2 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h2><h3 id="挂载对象"><a href="#挂载对象" class="headerlink" title="挂载对象"></a>挂载对象</h3><p>首次使用时将提示选在挂载源，选择挂载源，填入对应路径即可。 系统内置了本地路径（FileSystem）挂载源。</p>
+<h3 id="目录加密"><a href="#目录加密" class="headerlink" title="目录加密"></a>目录加密</h3><p>在需加密目录内新建 <code>.passwd</code> 文件，<code>type</code> 为验证方式，<code>data</code> 为验证内容。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">type:</span> basic </span><br><span class="line"><span class="string">data:</span> </span><br><span class="line">  - <span class="string">user1:</span><span class="number">111111</span> </span><br><span class="line">  - <span class="string">user2:</span>aaaaaa</span><br></pre></td></tr></table></figure>
+
+<p><code>basic</code> 是内置的验证方式，使用用户名密码对进行判断，上面的例子中可使用 <code>user1</code> 的密码为 <code>111</code>，<code>user2</code> 的密码为 <code>aaaaaa</code>。请参考 <a href="https://www.moewah.com/go/aHR0cHM6Ly9naXRodWIuY29tL3JlcnVpbi9zaGFyZWxpc3QvYmxvYi9tYXN0ZXIvZXhhbXBsZQ==" target="_blank" rel="noopener">example/SecretFolder/.passwd</a>。</p>
+<h3 id="虚拟目录"><a href="#虚拟目录" class="headerlink" title="虚拟目录"></a>虚拟目录</h3><p>在需创建虚拟目录处新建<code>目录名.d.ln</code> 文件。 其内容为<code>挂载源:挂载路径</code> 如：创建虚拟目录指向本地 <code>/root</code>。</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">fs:</span>/root</span><br></pre></td></tr></table></figure>
+
+<p>其中挂载源 <code>fs</code> 表示本地磁盘，<code>/root</code> 代表路径。</p>
+<p>再如：创建虚拟目录指向 Google Drive 的某个共享文件夹</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">gd:</span><span class="number">0</span>BwfTxffUGy_GNF9KQ25Xd0xxxxxxx</span><br></pre></td></tr></table></figure>
+
+<p><code>gd</code> 是 Google Drive 的挂载源标示，冒号后的是共享文件夹 ID。</p>
+<h3 id="虚拟文件"><a href="#虚拟文件" class="headerlink" title="虚拟文件"></a>虚拟文件</h3><p>与虚拟目录类似，目标指向具体文件。<br>在需创建虚拟文件处新建<code>文件名.后缀名.ln</code> 文件。 其内容为<code>挂载源:挂载路径</code>。 如：创建一个 <code>ubuntu_18.iso</code> 的虚拟文件，请参考 <a href="https://www.moewah.com/go/aHR0cHM6Ly9naXRodWIuY29tL3JlcnVpbi9zaGFyZWxpc3QvYmxvYi9tYXN0ZXIvZXhhbXBsZQ==" target="_blank" rel="noopener">example/linkTo_download_ubuntu_18.iso.ln</a>。</p>
+<h3 id="WebDAV"><a href="#WebDAV" class="headerlink" title="WebDAV"></a>WebDAV</h3><p>系统部分支持 WebDAV。可使用的功能包括列目录、展示内容、权限校验。由于系统仅做挂载用途，不支持写入、删除、重命名、复制等操作。默认根路径为 <code>/webdav</code>，可在后台修改 WebDAV 的路径。</p>
+<p><strong>注意事项：</strong><br>windows 挂载 webdav 可读取文件最大为 50M，请<a href="https://www.moewah.com/go/aHR0cHM6Ly9hbnN3ZXJzLm1pY3Jvc29mdC5jb20vZW4tdXMvaWUvZm9ydW0vYWxsL2Vycm9yLTB4ODAwNzAwZGYtdGhlLWZpbGUtc2l6ZS1leGNlZWRzLXRoZS1saW1pdC9kMjA4YmJhNi05MjBjLTQ2MzktYmQ0NS1mMzQ1ZjQ2MjkzNGY=" target="_blank" rel="noopener">参考</a>修改</p>
 
       
     </div>
@@ -449,9 +454,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/js/" rel="tag"># js</a>
-          
-            <a href="/tags/DOM/" rel="tag"># DOM</a>
+            <a href="/tags/Google-Drive/" rel="tag"># Google Drive</a>
           
         </div>
       
@@ -464,8 +467,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/07/a标签的点击事件和屏蔽跳转/" rel="next" title="a标签的点击事件和屏蔽跳转">
-                <i class="fa fa-chevron-left"></i> a标签的点击事件和屏蔽跳转
+              <a href="/2019/08/11/window.setTimeout的code参数/" rel="next" title="关于setTimeout中code参数、附加参数和匿名函数的使用">
+                <i class="fa fa-chevron-left"></i> 关于setTimeout中code参数、附加参数和匿名函数的使用
               </a>
             
           </div>
@@ -473,10 +476,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/09/关于getComputedStyle/" rel="prev" title="window.getComputedStyle(可获取伪类元素样式)">
-                window.getComputedStyle(可获取伪类元素样式) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -648,7 +647,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#二者的区别"><span class="nav-number">1.</span> <span class="nav-text">二者的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOMContentLoaded事件"><span class="nav-number">2.</span> <span class="nav-text">DOMContentLoaded事件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#截图"><span class="nav-number">1.</span> <span class="nav-text">截图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特性"><span class="nav-number">2.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本安装"><span class="nav-number">3.</span> <span class="nav-text">脚本安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-安装"><span class="nav-number">4.</span> <span class="nav-text">Docker 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加域名-SSL"><span class="nav-number">5.</span> <span class="nav-text">添加域名 SSL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#功能说明"><span class="nav-number">6.</span> <span class="nav-text">功能说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#挂载对象"><span class="nav-number">6.1.</span> <span class="nav-text">挂载对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录加密"><span class="nav-number">6.2.</span> <span class="nav-text">目录加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟目录"><span class="nav-number">6.3.</span> <span class="nav-text">虚拟目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟文件"><span class="nav-number">6.4.</span> <span class="nav-text">虚拟文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebDAV"><span class="nav-number">6.5.</span> <span class="nav-text">WebDAV</span></a></li></ol></li></ol></div>
             
 
           </div>
