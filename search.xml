@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[GoIndex: 无需服务器的Google Drive目录索引程序]]></title>
+    <url>%2F2019%2F09%2F17%2FGoIndex-%E6%97%A0%E9%9C%80%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84Google-Drive%E7%9B%AE%E5%BD%95%E7%B4%A2%E5%BC%95%E7%A8%8B%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[转载文章：GoIndex：一个无需服务器的Google Drive目录索引程序 说明：GoIndex是一款部署在Cloudflare Workers的Google Drive目录索引程序，无需提供服务器，可以直接列出你谷歌网盘的所有文件，同时下载和访问也不需要挂梯子，也可以在线观看某些格式的视频文件，拿来玩玩也是可以的。 截图 安装Github地址：https://github.com/donwa/goindex 首先肯定是需要一个谷歌网盘的，个人的话容量有点小，如果想容量大的，可以免费申请一个无限容量的Google Drive网盘，申请方法查看→传送门。 这里直接使用作者提供的快速部署方法，由于使用的是rclone的google api，高峰期难免会出现点问题，后面也会说下使用自己的api部署方法。 1、获取Workers代码先访问：https://installen.gd.workers.dev/，点击`GET AUTH CODE，验证你的谷歌账号获取Auth code`。 然后开始输入你的Auth code，其它可以先默认，然后点击BUILD获取你的代码。 开头的相关参数，可自行修改： 123456#站点名称"siteName": "GoIndex",#根目录访问密码，如不设置留空即可"root_pass": "moerats",#根目录ID，默认整个网盘文件夹，如果只想列出根目录某个文件夹，那么填入该文件夹ID即可。"root": "root" 文件夹ID获取方法，点击根目录某个文件夹，地址栏为：https://drive.google.com/drive/folders/1C4Aro，则1C4Aro为文件夹ID。 2、部署到Workers 首先登录cloudflare，官网→传送门，然后首页右侧可以看到Workers入口。 点进去后新建一个Workers子域名，也就是你的专属域名，填入确认后就更改不了了，所以别乱填。接下来点击Create a Worker创建一个Worker。把你之前获取的Workers代码粘贴进去，然后可以在左上角双击修改域名，再点击Save and Deploy即可。最后打开分配的子域名即可，此后修改配置可以自行修改Workers代码。 绑定域名如果想绑定自己的域名，就需要先将自己的域名转到cloudflare，然后点自己的域名，解析一个A记录，IP地址随意。然后在上方找到Workers，选择后，点击页面下的Add route，进行如下设置。按照图中的格式，填上自己的域名，并选择对应的Workers程序即可。 API部署这里也可以使用自己的API部署，好处就是安全点，高峰期也不容易爆炸，当然安装会麻烦点，如果不经常使用的话，还是建议用上面的方法快速部署。到Google Developer Console进行如下操作。 1、获取GDrive客户端 首先需要选择一个项目，如果没有就先创建一个，然后启用Google Drive API，启用地址：点击进入，注意这里使用个人账号操作。再创建一个OAuth client ID，创建地址：点击进入。应用类型选择其他(Other)，名称自己填，这里博主填的GoIndex。然后你会获得自己的客户端ID和客户端密钥，再复制下来。 2、获取refresh_token这里使用Rclone来获取refresh_token，先登录VPS，先安装依赖，使用命令： 1234#CentOS系统yum install p7zip unzip -y#Debian/Ubuntu系统apt install -y p7zip-full 再安装Rclone，使用命令： 1curl https://rclone.org/install.sh | bash 开始配置，使用命令： 1rclone config 会出现以下信息： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143n) New remotes) Set configuration passwordq) Quit confign/s/q&gt; nname&gt; Rats #配置名称，随便填Type of storage to configure.Enter a string value. Press Enter for the default ("").Choose a number from below, or type in your own value 1 / 1Fichier \ "fichier" 2 / Alias for an existing remote \ "alias" 3 / Amazon Drive \ "amazon cloud drive" 4 / Amazon S3 Compliant Storage Provider (AWS, Alibaba, Ceph, Digital Ocean, Dreamhost, IBM COS, Minio, etc) \ "s3" 5 / Backblaze B2 \ "b2" 6 / Box \ "box" 7 / Cache a remote \ "cache" 8 / Dropbox \ "dropbox" 9 / Encrypt/Decrypt a remote \ "crypt"10 / FTP Connection \ "ftp"11 / Google Cloud Storage (this is not Google Drive) \ "google cloud storage"12 / Google Drive \ "drive"13 / Google Photos \ "google photos"14 / Hubic \ "hubic"15 / JottaCloud \ "jottacloud"16 / Koofr \ "koofr"17 / Local Disk \ "local"18 / Mega \ "mega"19 / Microsoft Azure Blob Storage \ "azureblob"20 / Microsoft OneDrive \ "onedrive"21 / OpenDrive \ "opendrive"22 / Openstack Swift (Rackspace Cloud Files, Memset Memstore, OVH) \ "swift"23 / Pcloud \ "pcloud"24 / Put.io \ "putio"25 / QingCloud Object Storage \ "qingstor"26 / SSH/SFTP Connection \ "sftp"27 / Union merges the contents of several remotes \ "union"28 / Webdav \ "webdav"29 / Yandex Disk \ "yandex"30 / http Connection \ "http"31 / premiumize.me \ "premiumizeme"Storage&gt; 12 #选择12，Google Driveclient_id&gt; 850428 #填上你的Google Drive客户端IDclient_secret&gt; D72gPc #填上你的Google Drive客户端密匙Choose a number from below, or type in your own value 1 / Full access all files, excluding Application Data Folder. \ "drive" 2 / Read-only access to file metadata and file contents. \ "drive.readonly" / Access to files created by rclone only. 3 | These are visible in the drive website. | File authorization is revoked when the user deauthorizes the app. \ "drive.file" / Allows read and write access to the Application Data folder. 4 | This is not visible in the drive website. \ "drive.appfolder" / Allows read-only access to file metadata but 5 | does not allow any access to read or download file content. \ "drive.metadata.readonly"scope&gt; 1 ID of the root folderLeave blank normally.Fill in to access "Computers" folders. (see docs).Enter a string value. Press Enter for the default ("").root_folder_id&gt; Service Account Credentials JSON file path Leave blank normally.Needed only if you want use SA instead of interactive login.Enter a string value. Press Enter for the default ("").service_account_file&gt; Edit advanced config? (y/n)y) Yesn) Noy/n&gt; n #输入nRemote configUse auto config? * Say Y if not sure * Say N if you are working on a remote or headless machiney) Yesn) Noy/n&gt; n #输入nIf your browser doesn't open automatically go to the following link: https://accounts.google.com/o/ #打开该地址获取codeLog in and authorize rclone for accessEnter verification code&gt;hjdd #输入你获取到的codeConfigure this as a team drive?y) Yesn) Noy/n&gt; n #输入n--------------------[Rats]type = driveclient_id = 85042871client_secret = D72gPcscope = drivetoken = &#123;"access_token":"y902Z"&#125; #记住里面的refresh_token参数--------------------y) Yes this is OKe) Edit this remoted) Delete this remotey/e/d&gt; y #输入yCurrent remotes:Name Type==== ====Rats drivee) Edit existing remoten) New remoted) Delete remoter) Rename remotec) Copy remotes) Set configuration passwordq) Quit confige/n/d/r/c/s/q&gt; q #输入q保存退出 此时我们在配置过程中就获取到了refresh_token参数，如果忘了的可以查看配置文件。 不知道配置文件在哪的，可以使用命令： 1rclone config file | grep rclone.conf 3、获取并修改Workers代码Workers代码可以点击该地址查看→传送门，先复制代码，部分修改可参考上面，不同的是，需要填上自己的api信息，如下： 1234#填上自己的api客户端，密匙和获取到的refresh_token“client_id”：“20226481”，“client_secret”：“X4Z3ca8”，“refresh_token”：“”， 最后就可以部署Workers代码了，方法参考上面的快速部署。]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Google Drive</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Sharelist挂载GoogleDrive]]></title>
     <url>%2F2019%2F09%2F09%2FSharelist%E6%8C%82%E8%BD%BDGoogleDrive%2F</url>
     <content type="text"><![CDATA[转载文章：ShareList（原 GDLIST） - 支持 Google Drive/OneDrive 多网盘同时挂载 ShareList 原名 GDlist是一个易用的网盘工具，支持快速挂载 Google Drive、OneDrive ，可通过插件扩展功能。不占服务器空间；可多个 Google Drive 和 OneDrive 同时挂载到网盘；支持直链下载；在线预览（图片、视频、音频）。 Github 开源地址：https://github.com/reruin/sharelist 截图 特性 多种网盘系统快速挂载。 支持虚拟目录和虚拟文件。 支持目录加密。 插件机制。 国际化支持。 WebDAV 导出。 脚本安装系统要求：CentOS、Debian、Ubuntu 运行命令： 123456789#Debian/Ubuntu系统apt-get -y install git#CentOS/RHEL系统yum -y install git#下载源码安装git clone https://github.com/reruin/sharelist.gitcd sharelist &amp;&amp; bash install.sh 完成后，访问 http://ip:33001，进入界面开始设置，记住网盘文件夹要共享一下，不然会出现 500 错误。WebDAV 目录则为 http://localhost:33001/webdav Docker 安装1、安装 Docker 和 Docker Compose 123456#安装Dockercurl -sSL https://get.docker.com/ | shservice docker start#安装Docker Composecurl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-composechmod +x /usr/local/bin/docker-compose 2、安装 ShareList 12345678910#Debian/Ubuntu系统apt-get -y install git#CentOS/RHEL系统yum -y install git#安装GDLISTgit clone https://github.com/reruin/sharelist.gitcd sharelistdocker-compose up -d 最后访问 http://IP:33001 即可。 添加域名 SSL如果想用域名查看的，可以用 Caddy 反代，并自动添加 SSL 证书。首先需要解析一个域名到服务器上。 安装 Caddy 123wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/caddy_install.sh &amp;&amp; chmod +x caddy_install.sh &amp;&amp; bash caddy_install.sh#备用地址wget -N --no-check-certificate https://www.moewah.com/source/caddy_install.sh &amp;&amp; chmod +x caddy_install.sh &amp;&amp; bash caddy_install.sh 编辑配置文件 123456789101112#以下全部内容是一个整体，修改域名、IP、邮箱后一起复制到SSH运行！echo "https://xx.com &#123; tls admin@moewah.com proxy / 111.111.111.111:33001 &#123; header_upstream Host &#123;host&#125; header_upstream X-Real-IP &#123;remote&#125; header_upstream X-Forwarded-For &#123;remote&#125; header_upstream X-Forwarded-Proto &#123;scheme&#125; &#125; log /var/log/caddy.log gzip&#125;" &gt; /usr/local/caddy/Caddyfile 启动 Caddy 1/etc/init.d/caddy restart 最后就可以通过域名 https 访问了。 功能说明挂载对象首次使用时将提示选在挂载源，选择挂载源，填入对应路径即可。 系统内置了本地路径（FileSystem）挂载源。 目录加密在需加密目录内新建 .passwd 文件，type 为验证方式，data 为验证内容。 1234type: basic data: - user1:111111 - user2:aaaaaa basic 是内置的验证方式，使用用户名密码对进行判断，上面的例子中可使用 user1 的密码为 111，user2 的密码为 aaaaaa。请参考 example/SecretFolder/.passwd。 虚拟目录在需创建虚拟目录处新建目录名.d.ln 文件。 其内容为挂载源:挂载路径 如：创建虚拟目录指向本地 /root。 1fs:/root 其中挂载源 fs 表示本地磁盘，/root 代表路径。 再如：创建虚拟目录指向 Google Drive 的某个共享文件夹 1gd:0BwfTxffUGy_GNF9KQ25Xd0xxxxxxx gd 是 Google Drive 的挂载源标示，冒号后的是共享文件夹 ID。 虚拟文件与虚拟目录类似，目标指向具体文件。在需创建虚拟文件处新建文件名.后缀名.ln 文件。 其内容为挂载源:挂载路径。 如：创建一个 ubuntu_18.iso 的虚拟文件，请参考 example/linkTo_download_ubuntu_18.iso.ln。 WebDAV系统部分支持 WebDAV。可使用的功能包括列目录、展示内容、权限校验。由于系统仅做挂载用途，不支持写入、删除、重命名、复制等操作。默认根路径为 /webdav，可在后台修改 WebDAV 的路径。 注意事项：windows 挂载 webdav 可读取文件最大为 50M，请参考修改]]></content>
@@ -54,8 +65,8 @@
         <category>Programming</category>
       </categories>
       <tags>
-        <tag>js</tag>
         <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -66,8 +77,8 @@
         <category>Programming</category>
       </categories>
       <tags>
-        <tag>js</tag>
         <tag>html</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -87,13 +98,13 @@
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
+    <title><![CDATA[分类目录]]></title>
+    <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[分类目录]]></title>
-    <url>%2Fcategories%2Findex.html</url>
+    <title><![CDATA[tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>
