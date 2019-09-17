@@ -54,8 +54,8 @@
         <category>Programming</category>
       </categories>
       <tags>
-        <tag>html</tag>
         <tag>js</tag>
+        <tag>html</tag>
       </tags>
   </entry>
   <entry>
@@ -66,8 +66,8 @@
         <category>Programming</category>
       </categories>
       <tags>
-        <tag>html</tag>
         <tag>js</tag>
+        <tag>html</tag>
       </tags>
   </entry>
   <entry>
@@ -87,13 +87,13 @@
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[分类目录]]></title>
-    <url>%2Fcategories%2Findex.html</url>
+    <title><![CDATA[tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
+    <title><![CDATA[分类目录]]></title>
+    <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>
