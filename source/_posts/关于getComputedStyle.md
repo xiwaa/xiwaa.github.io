@@ -57,7 +57,7 @@ let style = window.getComputedStyle(elem1, null);
 
 `getComputedStyle.getPropertyValue()`方法用于获取特定属性的值,  参见上面第11行.
 
-2. `getComputedStyle` 是只读的, 只能获取样式, 不能设置. `element.style`即可读也可写, 可攻可受、可进可退, 简直欢喜无量, 不可言说...
+2. `getComputedStyle` 是只读的, 只能获取样式, 不能设置. `element.style` 可读可写, 可攻可受、可进可退、 欢喜无量、 不可言说...
 
 ```javascript
 let elem = document.getElementById("elem");

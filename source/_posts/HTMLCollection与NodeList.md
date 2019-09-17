@@ -40,7 +40,7 @@ HTMLCollection对象是一个包含了元素（元素顺序为文档流中的顺
 
 `NodeList`对象是一个节点的集合, 是由`Node.childNodes`和`document.querySelectorAll()`返回的. NodeList是一个类数组(`Array-like`)的对象.
 
-在一些情况下, `NodeList`是一个实时的集合, 也就是说如果文档中的节点树发生变化, 已经存在的实时`NodeList`对象也会随之变化. 例如, `Node.childNodes`是实时的:
+在一些情况下, `NodeList`是一个实时的集合, 也就是说如果文档中的节点树发生变化, 已经存在的实时`NodeList`对象也会随之变化. 例如, `Node.childNodes`是实时的.
 
 ```javascript
 const parent = document.getElementById("parent");
@@ -50,7 +50,7 @@ parent.appendChild(document.createElement("div"));
 console.log(chid_nodes.length);		//结果变成3了
 ```
 
-在其他情况下, `NodeList`是一个静态集合, 也就意味着随后对文档对象模型的任何改动都不会影响集合的内容. 比如`document.querySelectorAll()` 会返回一个静态的`NodeList`. 最好牢记这种不同, 尤其是在对`NodeList`进行遍历的时候.
+在其他情况下, `NodeList`是一个静态集合, 也就意味着随后对文档对象模型的任何改动都不会影响集合的内容. 比如`document.querySelectorAll()` 会返回一个静态的`NodeList`. 最好牢记这种不同, 尤其是在对`NodeList`进行遍历的时候. 
 
 #### **属性:**
 
@@ -76,7 +76,6 @@ console.log(chid_nodes.length);		//结果变成3了
 
     Returns an [`iterator`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols) allowing code to go through all values (nodes) of the key/value pairs contained in the collection.
     
-    
 
 --------
 
@@ -92,7 +91,7 @@ console.log(chid_nodes.length);		//结果变成3了
 
 --------
 
-### ***闲扯环节***
+### **封装一个isLive函数**
 
 上面已经写得很清楚了, 记住区别就行. 下面介绍一下stackoverflow上一位答主判断`HTMLCollection`和`NodeList`什么时候静态什么时候实时的代码, 或许可以帮助理解.
 
@@ -147,10 +146,38 @@ console.log(chid_nodes.length);		//结果变成3了
 
 --------
 
+### **未来走势**
+
+w3c的 [Document Object Model (Core) Level 1](https://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html)文档里面提到node的属性childNodes的时候是这样说的:
+
+`childNodes`: A [`NodeList`](https://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html#ID-536297177) that contains all children of this node. If there are no children, this is a [`NodeList`](https://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html#ID-536297177) containing no nodes. The content of the returned [`NodeList`](https://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html#ID-536297177) is ***"live"*** in the sense that, for instance, changes to the children of the node object that it	was created from are immediately reflected in the nodes returned by the [`NodeList`](https://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html#ID-536297177) accessors; it is not a static snapshot of the content of the node. This is true for every [`NodeList`](https://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html#ID-536297177), including the ones returned by the `getElementsByTagName` method.
+
+上面提到了`getElementByTagName`, 而且把它也当成了NodeList而不是我们前面说的HtmlCollection. 卧槽, 怎么冲突了?
+
+w3c的DOM4文档里面的 4.2.6节 Old-style collections: `NodeList` and `HTMLCollection`是这么说的:
+
+> A collection is an object that represents a lists of DOM nodes. A [collection](https://www.w3.org/TR/domcore/#concept-collection) can be either live or static. Unless otherwise stated, a [collection](https://www.w3.org/TR/domcore/#concept-collection) must be [live](https://www.w3.org/TR/domcore/#concept-collection-live).
+>
+> If a [collection](https://www.w3.org/TR/domcore/#concept-collection) is [live](https://www.w3.org/TR/domcore/#concept-collection-live), then the attributes and methods on that object must operate on the actual underlying data, not a snapshot of the data.
+
+它这意思就是说只要是collection, 无论NodeList还是HTMLCollection都是实时(***live***)的.  所以可能未来都是实时的了吧,不过现在还不完全是这样.
+
+--------
+
 **参考:**
 
++ [Document Object Model (Core) Level 1](https://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html)
+
 + [Understanding the difference between an HTMLCollection and a NodeList](https://teamtreehouse.com/community/understanding-the-difference-between-an-htmlcollection-and-a-nodelist)
+
 + [Difference between HTMLCollection, NodeLists, and arrays of objects](https://stackoverflow.com/questions/15763358/difference-between-htmlcollection-nodelists-and-arrays-of-objects)
+
 + [MDN \- HTMLCollection](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection)
+
 + [MDN \- NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList)
+
 + [W3C \- Node Types](https://www.w3school.com.cn/jsref/prop_node_nodetype.asp)
+
++ [W3C \- DOM4 \- NodeList and HTMLCollection](https://www.w3.org/TR/domcore/#old-style-collections:-nodelist-and-htmlcollection)
+
+    

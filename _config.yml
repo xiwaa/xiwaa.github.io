@@ -4,8 +4,8 @@
 
 # Site
 title: Xiwaaの扣扣空间
-subtitle: 持续更新幼儿园作文
-description: 大班学历盲流, 浅色床单哭泣.
+subtitle: 在深夜的浅色床单痛苦
+description: 幼儿园大班学历
 keywords:
 author: Xiwaa
 language: zh-Hans
@@ -35,7 +35,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:

@@ -44,14 +44,15 @@ window.onload = function() {
 
 上面这样挺好了, 可是如果函数太多的话也挺难看的, 也不够灵活. 所以可以如下定义一个addLoadEvent函数:
 
-```javascript
+```
 function addLoadEvent(func) {
     const oldOnload = window.onload;
-    if (typeof	window.onload != "function") {
+    if (typeof	window.onload !== "function") {
         window.onload = func;
     } else {
         window.onload = function() {
-			lodOnload();
+        
+            oldOnload();
             func();
         }
     }
@@ -60,7 +61,7 @@ function addLoadEvent(func) {
 
 以上代码做了如下事情:
 
-1. 把现有的window.onload事件处理函数的值存入变量oldonload。
+1. 把现有的window.onload事件处理函数的值存入变量oldOnload。
 2. 如果在这个处理函数上还没有绑定的任何函数，则使用window.οnlοad=func直接调用，不需要加括号
 
 3. 如果在这个处理函数上已经绑定了一些函数，就把新的函数追加到现在指令的末尾。
